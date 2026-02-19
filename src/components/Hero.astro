@@ -47,18 +47,19 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       <!-- Tu me diras quoi mettre ici -->
     </div>
 
-    <!-- Back button -->
-    <button
-      id="back-btn"
-      class="absolute bottom-[-40px] md:bottom-[-50px] left-1/2 -translate-x-1/2 inline-flex items-center gap-2 text-[#a1a1aa] hover:text-white border border-white/10 hover:border-white/30 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm backdrop-blur-md bg-white/5 cursor-pointer hero-anim opacity-0 pointer-events-none"
-    >
-      <svg class="w-3.5 h-3.5 md:w-4 md:h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-      </svg>
-      <span data-i18n="back">Back</span>
-    </button>
   </div>
 </section>
+
+<!-- Back button — fixed, always on top -->
+<button
+  id="back-btn"
+  class="fixed top-4 left-4 md:bottom-8 md:top-auto md:left-1/2 md:-translate-x-1/2 z-50 inline-flex items-center gap-2 text-[#a1a1aa] hover:text-white border border-white/10 hover:border-white/30 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm backdrop-blur-md bg-[#0a0a0a]/80 cursor-pointer hero-anim opacity-0 pointer-events-none"
+>
+  <svg class="w-3.5 h-3.5 md:w-4 md:h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+  </svg>
+  <span data-i18n="back">Back</span>
+</button>
 
 <style>
   .hero-anim {
