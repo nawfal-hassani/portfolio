@@ -3,7 +3,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 ---
 
 <section id="hero-section" class="min-h-screen flex items-center px-6 md:px-16 lg:px-24 overflow-hidden">
-  <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-8 relative">
+  <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-center gap-2 md:gap-8 relative">
 
     <!-- Text -->
     <div id="hero-text" class="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-1 hero-anim">
@@ -28,7 +28,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     <!-- Globe + Explore button -->
     <div id="globe-area" class="relative flex items-center justify-center order-1 md:order-2 hero-anim" style="transform-origin: center center;">
-      <div class="w-full h-[250px] md:h-[500px] relative">
+      <div class="w-full h-[180px] md:h-[500px] relative">
         <GlobeScene client:only="react" />
       </div>
       <button
