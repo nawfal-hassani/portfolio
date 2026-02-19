@@ -2,58 +2,57 @@
 import GlobeScene from './Globe/GlobeScene.tsx';
 ---
 
-<section id="hero-section" class="h-screen flex items-center px-6 md:px-16 lg:px-24 overflow-hidden">
-  <div class="max-w-7xl mx-auto w-full grid grid-cols-2 items-center gap-8 relative">
+<section id="hero-section" class="min-h-screen flex items-center px-6 md:px-16 lg:px-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-8 relative">
 
-    <!-- Left: Text -->
-    <div id="hero-text" class="flex flex-col items-start hero-anim">
+    <!-- Text -->
+    <div id="hero-text" class="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-1 hero-anim">
       <p data-i18n="role" class="text-[#60a5fa] font-mono text-sm mb-4 animate-fade-in" style="animation-delay: 0.1s;">
         Full-Stack Developer
       </p>
-      <h1 data-i18n="name" class="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 animate-fade-in" style="animation-delay: 0.25s;">
+      <h1 data-i18n="name" class="text-4xl md:text-7xl font-bold text-white tracking-tight mb-4 md:mb-6 animate-fade-in" style="animation-delay: 0.25s;">
         Nawfal<br />Hassani
       </h1>
-      <p data-i18n="tagline" class="text-[#a1a1aa] text-lg max-w-md mb-8 leading-relaxed animate-fade-in" style="animation-delay: 0.4s;">
+      <p data-i18n="tagline" class="text-[#a1a1aa] text-base md:text-lg max-w-md mb-6 md:mb-8 leading-relaxed animate-fade-in" style="animation-delay: 0.4s;">
         Building digital experiences that blend design and engineering.
       </p>
       <a
         href="#contact"
         data-i18n="cta"
-        class="inline-flex items-center gap-2 bg-[#60a5fa] hover:bg-[#93c5fd] text-[#0a0a0a] font-medium px-6 py-3 rounded-full transition-colors w-fit animate-fade-in"
+        class="inline-flex items-center gap-2 bg-[#60a5fa] hover:bg-[#93c5fd] text-[#0a0a0a] font-medium px-6 py-3 rounded-full transition-colors w-fit animate-fade-in text-sm md:text-base"
         style="animation-delay: 0.55s;"
       >
         Get in Touch
       </a>
     </div>
 
-    <!-- Right: Globe + Explore button -->
-    <div id="globe-area" class="relative flex items-center justify-center hero-anim" style="transform-origin: center center;">
-      <div class="w-full h-[450px] md:h-[500px] relative">
+    <!-- Globe + Explore button -->
+    <div id="globe-area" class="relative flex items-center justify-center order-1 md:order-2 hero-anim" style="transform-origin: center center;">
+      <div class="w-full h-[250px] md:h-[500px] relative">
         <GlobeScene client:only="react" />
       </div>
-      <!-- Explore button — bottom right, glassmorphism -->
       <button
         id="explore-btn"
-        class="absolute bottom-4 right-4 inline-flex items-center gap-2 text-white/80 hover:text-white border border-white/20 hover:border-white/40 px-5 py-2.5 rounded-full cursor-pointer text-sm hero-anim bg-white/10 backdrop-blur-xl shadow-lg shadow-black/20 hover:bg-white/15"
+        class="absolute bottom-2 right-2 md:bottom-4 md:right-4 inline-flex items-center gap-2 text-white/80 hover:text-white border border-white/20 hover:border-white/40 px-4 py-2 md:px-5 md:py-2.5 rounded-full cursor-pointer text-xs md:text-sm hero-anim bg-white/10 backdrop-blur-xl shadow-lg shadow-black/20 hover:bg-white/15"
       >
         <span data-i18n="explore">Explore</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
       </button>
     </div>
 
-    <!-- Explore content — appears on the right after animation -->
-    <div id="explore-content" class="absolute right-0 top-1/2 -translate-y-1/2 w-[45%] flex items-center justify-center hero-anim opacity-0 pointer-events-none">
+    <!-- Explore content — right side on desktop, below on mobile -->
+    <div id="explore-content" class="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-[45%] flex items-center justify-center hero-anim opacity-0 pointer-events-none">
       <!-- Tu me diras quoi mettre ici -->
     </div>
 
     <!-- Back button -->
     <button
       id="back-btn"
-      class="absolute bottom-[-50px] left-1/2 -translate-x-1/2 inline-flex items-center gap-2 text-[#a1a1aa] hover:text-white border border-white/10 hover:border-white/30 px-5 py-2.5 rounded-full text-sm backdrop-blur-md bg-white/5 cursor-pointer hero-anim opacity-0 pointer-events-none"
+      class="absolute bottom-[-40px] md:bottom-[-50px] left-1/2 -translate-x-1/2 inline-flex items-center gap-2 text-[#a1a1aa] hover:text-white border border-white/10 hover:border-white/30 px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm backdrop-blur-md bg-white/5 cursor-pointer hero-anim opacity-0 pointer-events-none"
     >
-      <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-3.5 h-3.5 md:w-4 md:h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
       </svg>
       <span data-i18n="back">Back</span>
@@ -79,31 +78,33 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     if (!heroText || !globeArea || !exploreBtn || !exploreContent || !backBtn) return;
 
     let isExploring = false;
+    const isMobile = () => window.innerWidth < 768;
 
     function goExplore() {
       if (isExploring) return;
       isExploring = true;
 
-      // Get grid info for calculation
       const grid = globeArea.parentElement!;
       const gridWidth = grid.getBoundingClientRect().width;
-      // Globe is in col2 (right half). We want it in left half, centered.
-      // Move it left by 50% of the grid width (one column)
-      const shiftX = -(gridWidth / 2);
 
-      // Animate text: fade + slide left
+      // Animate text: fade out
       heroText.style.opacity = '0';
-      heroText.style.transform = 'translateX(-60px)';
+      heroText.style.transform = isMobile() ? 'translateY(40px)' : 'translateX(-60px)';
       heroText.style.pointerEvents = 'none';
 
-      // Animate globe: move left + up + scale up
-      globeArea.style.transform = `translateX(${shiftX}px) translateY(-60px) scale(1.1)`;
+      // Animate globe: move + up + scale
+      if (isMobile()) {
+        globeArea.style.transform = 'translateY(-30px) scale(1.15)';
+      } else {
+        const shiftX = -(gridWidth / 2);
+        globeArea.style.transform = `translateX(${shiftX}px) translateY(-60px) scale(1.1)`;
+      }
 
       // Hide explore button
       exploreBtn.style.opacity = '0';
       exploreBtn.style.pointerEvents = 'none';
 
-      // Show explore content (right side)
+      // Show explore content
       setTimeout(() => {
         exploreContent.style.opacity = '1';
         exploreContent.style.pointerEvents = 'auto';
@@ -118,23 +119,18 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       if (!isExploring) return;
       isExploring = false;
 
-      // Hide explore content
       exploreContent.style.opacity = '0';
       exploreContent.style.pointerEvents = 'none';
 
-      // Reset globe
       globeArea.style.transform = '';
 
-      // Show text
       heroText.style.opacity = '1';
       heroText.style.transform = '';
       heroText.style.pointerEvents = '';
 
-      // Show explore button
       exploreBtn.style.opacity = '1';
       exploreBtn.style.pointerEvents = '';
 
-      // Hide back
       backBtn.style.opacity = '0';
       backBtn.style.pointerEvents = 'none';
     }
