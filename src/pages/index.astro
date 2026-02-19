@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Contact from '../components/Contact.astro';
+import LangSwitcher from '../components/LangSwitcher.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Nawfal Hassani | Portfolio">
+  <LangSwitcher />
+  <main>
+    <Hero />
+    <Contact />
+  </main>
+</BaseLayout>
+
+<script>
+  const translations: Record<string, Record<string, string>> = {
+    en: {
+      role: 'Full-Stack Developer',
+      name: 'Nawfal<br />Hassani',
+      tagline: 'Building digital experiences that blend design and engineering.',
+      cta: 'Get in Touch',
+      explore: 'Explore',
+      back: 'Back',
+      contactLabel: 'Contact',
+      contactTitle: "Let's work together",
+      contactDesc: 'Interested in collaborating or have a project in mind? Feel free to reach out.',
+    },
+    fr: {
+      role: 'Développeur Full-Stack',
+      name: 'Nawfal<br />Hassani',
+      tagline: 'Créer des expériences digitales qui allient design et ingénierie.',
+      cta: 'Me contacter',
+      explore: 'Explorer',
+      back: 'Retour',
+      contactLabel: 'Contact',
+      contactTitle: 'Travaillons ensemble',
+      contactDesc: 'Un projet en tête ou envie de collaborer\u00a0? N\'hésitez pas à me contacter.',
+    },
+    zh: {
+      role: '全栈开发者',
+      name: 'Nawfal<br />Hassani',
+      tagline: '构建融合设计与工程的数字体验。',
+      cta: '联系我',
+      explore: '探索',
+      back: '返回',
+      contactLabel: '联系方式',
+      contactTitle: '一起合作',
+      contactDesc: '有项目想法或者想合作？欢迎联系我。',
+    },
+    ar: {
+      role: 'مطور ويب متكامل',
+      name: 'Nawfal<br />Hassani',
+      tagline: 'بناء تجارب رقمية تجمع بين التصميم والهندسة.',
+      cta: 'تواصل معي',
+      explore: 'استكشف',
+      back: 'رجوع',
+      contactLabel: 'اتصل',
+      contactTitle: 'لنعمل معًا',
+      contactDesc: 'هل لديك مشروع في ذهنك أو ترغب في التعاون؟ لا تتردد في التواصل.',
+    },
+  };
+
+  const rtlLangs = ['ar'];
+
+  function setLang(lang: string) {
+    const t = translations[lang];
+    if (!t) return;
+
+    // Update all translatable elements
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n')!;
+      if (t[key]) {
+        el.innerHTML = t[key];
+      }
+    });
+
+    // Handle RTL
+    const isRtl = rtlLangs.includes(lang);
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // Save preference
+    localStorage.setItem('lang', lang);
+  }
+
+  function init() {
+    const saved = localStorage.getItem('lang') || 'en';
+    setLang(saved);
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setLang(btn.getAttribute('data-lang')!);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('astro:page-load', init);
+</script>
