@@ -6,7 +6,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
   <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-center gap-2 md:gap-8 relative">
 
     <!-- Text -->
-    <div id="hero-text" class="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-1 hero-anim">
+    <div id="hero-text" class="flex flex-col items-center text-center md:items-start md:text-left order-1 hero-anim z-10">
       <p data-i18n="role" class="text-[#60a5fa] font-mono text-sm mb-4 animate-fade-in" style="animation-delay: 0.1s;">
         Full-Stack Developer
       </p>
@@ -27,7 +27,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     </div>
 
     <!-- Globe + Explore button -->
-    <div id="globe-area" class="relative flex items-center justify-center order-1 md:order-2 hero-anim" style="transform-origin: center center;">
+    <div id="globe-area" class="relative flex items-center justify-center order-2 hero-anim" style="transform-origin: center center;">
       <div class="w-full h-[180px] md:h-[500px] relative">
         <GlobeScene client:only="react" />
       </div>
