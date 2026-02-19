@@ -33,10 +33,10 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       </div>
       <button
         id="explore-btn"
-        class="absolute -bottom-28 right-0 md:bottom-4 md:right-4 inline-flex items-center gap-2 text-white/80 hover:text-white border border-white/20 hover:border-white/40 px-4 py-2 md:px-5 md:py-2.5 rounded-full cursor-pointer text-xs md:text-sm hero-anim bg-white/10 backdrop-blur-xl shadow-lg shadow-black/20 hover:bg-white/15"
+        class="explore-btn absolute -bottom-28 right-0 md:bottom-4 md:right-4 inline-flex items-center gap-2.5 text-white border border-[#60a5fa]/40 hover:border-[#60a5fa]/70 px-5 py-2.5 md:px-6 md:py-3 rounded-full cursor-pointer text-xs md:text-sm hero-anim bg-[#60a5fa]/10 backdrop-blur-xl hover:bg-[#60a5fa]/20 transition-all duration-300"
       >
-        <span data-i18n="explore">Explore</span>
-        <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span data-i18n="explore" class="font-medium tracking-wide">Explore</span>
+        <svg class="w-4 h-4 md:w-4.5 md:h-4.5 explore-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
       </button>
@@ -65,6 +65,33 @@ import GlobeScene from './Globe/GlobeScene.tsx';
   .hero-anim {
     transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
                 opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .explore-btn {
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.15),
+                0 0 60px rgba(96, 165, 250, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: explore-glow 3s ease-in-out infinite;
+  }
+
+  .explore-btn:hover {
+    box-shadow: 0 0 25px rgba(96, 165, 250, 0.3),
+                0 0 80px rgba(96, 165, 250, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .explore-arrow {
+    animation: arrow-nudge 2s ease-in-out infinite;
+  }
+
+  @keyframes explore-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(96, 165, 250, 0.15), 0 0 60px rgba(96, 165, 250, 0.05); }
+    50% { box-shadow: 0 0 30px rgba(96, 165, 250, 0.25), 0 0 80px rgba(96, 165, 250, 0.1); }
+  }
+
+  @keyframes arrow-nudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
   }
 </style>
 
