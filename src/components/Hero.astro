@@ -7,13 +7,13 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     <!-- Text -->
     <div id="hero-text" class="flex flex-col items-center text-center md:items-start md:text-left order-1 hero-anim z-10">
-      <p data-i18n="role" class="text-[#60a5fa] font-mono text-sm mb-4 animate-fade-in" style="animation-delay: 0.1s;">
+      <p data-i18n="role" class="font-mono text-sm mb-4 animate-fade-in" style="animation-delay: 0.1s; color: var(--theme-accent);">
         Full-Stack Developer
       </p>
-      <h1 data-i18n="name" class="text-4xl md:text-7xl font-bold text-white tracking-tight mb-4 md:mb-6 animate-fade-in" style="animation-delay: 0.25s;">
+      <h1 data-i18n="name" class="text-4xl md:text-7xl font-bold tracking-tight mb-4 md:mb-6 animate-fade-in" style="animation-delay: 0.25s; color: var(--theme-text);">
         Nawfal<br />Hassani
       </h1>
-      <p data-i18n="tagline" class="text-[#a1a1aa] text-base md:text-lg max-w-md mb-6 md:mb-8 leading-relaxed animate-fade-in" style="animation-delay: 0.4s;">
+      <p data-i18n="tagline" class="text-base md:text-lg max-w-md mb-6 md:mb-8 leading-relaxed animate-fade-in" style="animation-delay: 0.4s; color: var(--theme-text-muted);">
         Building digital experiences that blend design and engineering.
       </p>
       <a
@@ -28,12 +28,12 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     <!-- Globe + Explore button -->
     <div id="globe-area" class="relative flex items-center justify-center order-2 hero-anim" style="transform-origin: center center;">
-      <div class="w-full h-[180px] md:h-[500px] relative">
+      <div class="w-full h-[240px] md:h-[600px] relative">
         <GlobeScene client:only="react" />
       </div>
       <button
         id="explore-btn"
-        class="explore-btn absolute -bottom-60 right-0 md:bottom-4 md:right-4 inline-flex items-center gap-2.5 text-white border border-[#60a5fa]/40 hover:border-[#60a5fa]/70 px-5 py-2.5 md:px-6 md:py-3 rounded-full cursor-pointer text-xs md:text-sm hero-anim bg-[#60a5fa]/10 backdrop-blur-xl hover:bg-[#60a5fa]/20 transition-all duration-300"
+        class="explore-btn absolute -bottom-40 right-0 rtl:right-auto rtl:left-0 md:bottom-4 md:right-0 md:left-auto rtl:md:right-auto rtl:md:left-0 inline-flex items-center gap-2.5 text-white border border-[#60a5fa]/40 hover:border-[#60a5fa]/70 px-5 py-2.5 md:px-6 md:py-3 rounded-full cursor-pointer text-xs md:text-sm hero-anim bg-[#60a5fa]/10 backdrop-blur-xl hover:bg-[#60a5fa]/20 transition-all duration-300"
       >
         <span data-i18n="explore" class="font-medium tracking-wide">Explore</span>
         <svg class="w-4 h-4 md:w-4.5 md:h-4.5 explore-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,8 +43,129 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     </div>
 
     <!-- Explore content — right side on desktop, below on mobile -->
-    <div id="explore-content" class="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-[45%] flex items-center justify-center hero-anim opacity-0 pointer-events-none">
-      <!-- Tu me diras quoi mettre ici -->
+    <div id="explore-content" class="absolute right-0 rtl:right-auto rtl:left-0 top-1/2 -translate-y-1/2 w-full md:w-[45%] flex items-center justify-center hero-anim opacity-0 pointer-events-none">
+
+      <!-- Menu buttons -->
+      <div id="explore-menu" class="w-full max-w-sm px-4 flex flex-col gap-3 relative z-10">
+        <button data-section="about" class="explore-menu-btn glass-btn group rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-5 flex items-center gap-4 text-left cursor-pointer relative overflow-hidden">
+          <div class="w-11 h-11 rounded-xl bg-[#60a5fa]/10 border border-[#60a5fa]/20 flex items-center justify-center shrink-0 group-hover:bg-[#60a5fa]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-medium" data-i18n="menuAbout">About</p>
+            <p class="text-[#71717a] text-xs" data-i18n="menuAboutSub">Who I am & what drives me</p>
+          </div>
+          <svg class="w-4 h-4 text-[#71717a] ml-auto group-hover:text-[#60a5fa] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <button data-section="projects" class="explore-menu-btn glass-btn group rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-5 flex items-center gap-4 text-left cursor-pointer relative overflow-hidden">
+          <div class="w-11 h-11 rounded-xl bg-[#60a5fa]/10 border border-[#60a5fa]/20 flex items-center justify-center shrink-0 group-hover:bg-[#60a5fa]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"/></svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-medium" data-i18n="menuProjects">Projects</p>
+            <p class="text-[#71717a] text-xs" data-i18n="menuProjectsSub">What I've built</p>
+          </div>
+          <svg class="w-4 h-4 text-[#71717a] ml-auto group-hover:text-[#60a5fa] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <button data-section="experience" class="explore-menu-btn glass-btn group rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-5 flex items-center gap-4 text-left cursor-pointer relative overflow-hidden">
+          <div class="w-11 h-11 rounded-xl bg-[#60a5fa]/10 border border-[#60a5fa]/20 flex items-center justify-center shrink-0 group-hover:bg-[#60a5fa]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-medium" data-i18n="menuExperience">Experience</p>
+            <p class="text-[#71717a] text-xs" data-i18n="menuExperienceSub">My journey so far</p>
+          </div>
+          <svg class="w-4 h-4 text-[#71717a] ml-auto group-hover:text-[#60a5fa] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <!-- CV Download -->
+        <a href="/cv-nawfal-hassani.pdf" download class="glass-btn group rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-4 flex items-center gap-4 text-left cursor-pointer relative overflow-hidden">
+          <div class="w-11 h-11 rounded-xl bg-[#34d399]/10 border border-[#34d399]/20 flex items-center justify-center shrink-0 group-hover:bg-[#34d399]/20 transition-colors">
+            <svg class="w-5 h-5 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-medium" data-i18n="menuCV">Download CV</p>
+            <p class="text-[#71717a] text-xs">PDF</p>
+          </div>
+          <svg class="w-4 h-4 text-[#34d399] ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+        </a>
+
+        <!-- Social links -->
+        <div class="flex items-center gap-3 justify-center pt-2">
+          <a href="https://www.linkedin.com/in/nawfal-hassani-445311341" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-[#0A66C2]/15 border border-[#0A66C2]/30 flex items-center justify-center hover:bg-[#0A66C2]/25 hover:border-[#0A66C2]/50 transition-all duration-300">
+            <svg class="w-4 h-4 text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/nawfal-hassani" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-[#8b5cf6]/15 border border-[#8b5cf6]/30 flex items-center justify-center hover:bg-[#8b5cf6]/25 hover:border-[#8b5cf6]/50 transition-all duration-300">
+            <svg class="w-4 h-4 text-[#8b5cf6]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <button id="discord-btn" class="w-9 h-9 rounded-xl bg-[#5865F2]/15 border border-[#5865F2]/30 flex items-center justify-center hover:bg-[#5865F2]/25 hover:border-[#5865F2]/50 transition-all duration-300 cursor-pointer relative">
+            <svg class="w-4 h-4 text-[#5865F2]" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            <span id="discord-tooltip" class="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#5865F2] text-white text-[10px] px-2 py-0.5 rounded-md whitespace-nowrap opacity-0 pointer-events-none transition-opacity duration-200">Copied!</span>
+          </button>
+          <a href="https://wa.me/33767847265" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 flex items-center justify-center hover:bg-[#25D366]/25 hover:border-[#25D366]/50 transition-all duration-300">
+            <svg class="w-4 h-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Section: About -->
+      <div id="section-about" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute">
+        <button class="section-back-btn flex items-center gap-2 text-[#71717a] hover:text-white text-xs mb-4 cursor-pointer transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span data-i18n="menuBack">Back to menu</span>
+        </button>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5">
+          <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-2" data-i18n="aboutLabel">About</p>
+          <p class="text-[#a1a1aa] text-sm leading-relaxed" data-i18n="aboutDesc">Curious and driven, I love building things from scratch. I learn by doing — experimenting, making mistakes, and always moving forward.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 flex items-center gap-4 mt-3">
+          <div class="w-10 h-10 rounded-xl bg-[#60a5fa]/10 border border-[#60a5fa]/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+          </div>
+          <div>
+            <p class="text-white text-sm font-medium">Epitech Montpellier</p>
+            <p class="text-[#71717a] text-xs" data-i18n="aboutYear">2nd year — Programme Grande École</p>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 mt-3">
+          <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-3" data-i18n="aboutTech">Tech Stack</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">JavaScript</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">TypeScript</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">React</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Node.js</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Python</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">C</span>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 mt-3">
+          <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-2" data-i18n="aboutMindset">Mindset</p>
+          <p class="text-[#a1a1aa] text-sm leading-relaxed" data-i18n="aboutMindsetDesc">I believe every challenge is a chance to grow. I like combining logic, creativity, and problem-solving to build things that actually work.</p>
+        </div>
+      </div>
+
+      <!-- Section: Projects (placeholder) -->
+      <div id="section-projects" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute">
+        <button class="section-back-btn flex items-center gap-2 text-[#71717a] hover:text-white text-xs mb-4 cursor-pointer transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span data-i18n="menuBack">Back to menu</span>
+        </button>
+        <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-3" data-i18n="menuProjects">Projects</p>
+        <p class="text-[#71717a] text-sm italic" data-i18n="comingSoon">Coming soon...</p>
+      </div>
+
+      <!-- Section: Experience (placeholder) -->
+      <div id="section-experience" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute">
+        <button class="section-back-btn flex items-center gap-2 text-[#71717a] hover:text-white text-xs mb-4 cursor-pointer transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span data-i18n="menuBack">Back to menu</span>
+        </button>
+        <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-3" data-i18n="menuExperience">Experience</p>
+        <p class="text-[#71717a] text-sm italic" data-i18n="comingSoon">Coming soon...</p>
+      </div>
+
     </div>
 
   </div>
@@ -93,6 +214,61 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     0%, 100% { transform: translateX(0); }
     50% { transform: translateX(4px); }
   }
+
+  #explore-menu,
+  .section-panel {
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #explore-menu.fade-out {
+    opacity: 0;
+    transform: translateX(-20px);
+    pointer-events: none;
+  }
+
+  [dir="rtl"] #explore-menu.fade-out {
+    transform: translateX(20px);
+  }
+
+  .section-panel {
+    opacity: 0;
+    transform: translateX(20px);
+    pointer-events: none;
+  }
+
+  [dir="rtl"] .section-panel {
+    transform: translateX(-20px);
+  }
+
+  .section-panel.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  /* Flip arrows in RTL */
+  [dir="rtl"] .explore-menu-btn svg:last-child,
+  [dir="rtl"] .section-back-btn svg {
+    transform: scaleX(-1);
+  }
+
+  /* Glass button */
+  .glass-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+  }
 </style>
 
 <script>
@@ -107,6 +283,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     let isExploring = false;
     const isMobile = () => window.innerWidth < 768;
+    const isRtl = () => document.documentElement.dir === 'rtl';
 
     function goExplore() {
       if (isExploring) return;
@@ -114,17 +291,18 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
       const grid = globeArea.parentElement!;
       const gridWidth = grid.getBoundingClientRect().width;
+      const rtl = isRtl();
 
-      // Animate text: fade out
+      // Animate text: fade out (inverse direction for RTL)
       heroText.style.opacity = '0';
-      heroText.style.transform = isMobile() ? 'translateY(40px)' : 'translateX(-60px)';
+      heroText.style.transform = isMobile() ? 'translateY(40px)' : `translateX(${rtl ? '60px' : '-60px'})`;
       heroText.style.pointerEvents = 'none';
 
-      // Animate globe: move + up + scale
+      // Animate globe: move + up + scale (inverse direction for RTL)
       if (isMobile()) {
         globeArea.style.transform = 'translateY(-30px) scale(1.15)';
       } else {
-        const shiftX = -(gridWidth / 2);
+        const shiftX = rtl ? (gridWidth / 2) : -(gridWidth / 2);
         globeArea.style.transform = `translateX(${shiftX}px) translateY(-60px) scale(1.1)`;
       }
 
@@ -150,6 +328,12 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       exploreContent.style.opacity = '0';
       exploreContent.style.pointerEvents = 'none';
 
+      // Reset to menu view for next explore (instant, no transition)
+      sectionPanels.forEach(p => {
+        (p as HTMLElement).classList.remove('active');
+      });
+      if (exploreMenu) exploreMenu.classList.remove('fade-out');
+
       globeArea.style.transform = '';
 
       heroText.style.opacity = '1';
@@ -161,6 +345,68 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
       backBtn.style.opacity = '0';
       backBtn.style.pointerEvents = 'none';
+    }
+
+    // Explore menu navigation
+    const exploreMenu = document.getElementById('explore-menu');
+    const sectionPanels = document.querySelectorAll('.section-panel');
+
+    function showSection(sectionId: string) {
+      if (!exploreMenu) return;
+      exploreMenu.classList.add('fade-out');
+      setTimeout(() => {
+        sectionPanels.forEach(p => {
+          const panel = p as HTMLElement;
+          if (panel.id === `section-${sectionId}`) {
+            panel.classList.add('active');
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+      }, 150);
+    }
+
+    function showMenu() {
+      if (!exploreMenu) return;
+      sectionPanels.forEach(p => {
+        (p as HTMLElement).classList.remove('active');
+      });
+      setTimeout(() => {
+        exploreMenu.classList.remove('fade-out');
+      }, 150);
+    }
+
+    // Glass effect: light follows mouse
+    document.querySelectorAll('.glass-btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = (btn as HTMLElement).getBoundingClientRect();
+        const x = ((e as MouseEvent).clientX - rect.left) / rect.width * 100;
+        const y = ((e as MouseEvent).clientY - rect.top) / rect.height * 100;
+        (btn as HTMLElement).style.setProperty('--mouse-x', `${x}%`);
+        (btn as HTMLElement).style.setProperty('--mouse-y', `${y}%`);
+      });
+    });
+
+    document.querySelectorAll('.explore-menu-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const section = btn.getAttribute('data-section');
+        if (section) showSection(section);
+      });
+    });
+
+    document.querySelectorAll('.section-back-btn').forEach(btn => {
+      btn.addEventListener('click', showMenu);
+    });
+
+    // Discord copy username
+    const discordBtn = document.getElementById('discord-btn');
+    const discordTooltip = document.getElementById('discord-tooltip');
+    if (discordBtn && discordTooltip) {
+      discordBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('yarkoss');
+        discordTooltip.style.opacity = '1';
+        setTimeout(() => { discordTooltip.style.opacity = '0'; }, 1500);
+      });
     }
 
     exploreBtn.addEventListener('click', goExplore);
