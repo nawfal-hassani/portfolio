@@ -7,8 +7,8 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     <!-- Text -->
     <div id="hero-text" class="flex flex-col items-center text-center md:items-start md:text-left order-1 hero-anim z-10">
-      <p data-i18n="role" class="font-mono text-sm mb-4 animate-fade-in inline-block px-3 py-1 rounded-full" style="animation-delay: 0.1s; color: var(--theme-accent); background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.2);">
-        Full-Stack Developer
+      <p data-i18n="role" class="font-mono text-sm mb-4 animate-fade-in" style="animation-delay: 0.1s; color: var(--theme-accent);">
+        Full-Stack <span class="role-highlight">Developer</span>
       </p>
       <h1 data-i18n="name" class="text-4xl md:text-7xl font-bold tracking-tight mb-4 md:mb-6 animate-fade-in" style="animation-delay: 0.25s; color: var(--theme-text);">
         Nawfal<br />Hassani
@@ -265,6 +265,14 @@ import GlobeScene from './Globe/GlobeScene.tsx';
   .hero-anim {
     transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
                 opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .role-highlight {
+    background: #60a5fa;
+    color: #0a0a0a;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 4px;
   }
 
   .explore-btn {
