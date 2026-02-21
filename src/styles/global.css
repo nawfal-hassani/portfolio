@@ -10,17 +10,167 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+/* ── Theme variables ── */
+[data-theme="dark"] {
+  --theme-bg: #0a0a0a;
+  --theme-text: #ffffff;
+  --theme-text-muted: #a1a1aa;
+  --theme-text-subtle: #71717a;
+  --theme-accent: #60a5fa;
+  --theme-border: rgba(255,255,255,0.1);
+  --theme-glass-bg: rgba(255,255,255,0.05);
+}
+
+[data-theme="light"] {
+  --theme-bg: #f8fafc;
+  --theme-text: #0f172a;
+  --theme-text-muted: #64748b;
+  --theme-text-subtle: #94a3b8;
+  --theme-accent: #2563eb;
+  --theme-border: rgba(0,0,0,0.08);
+  --theme-glass-bg: rgba(0,0,0,0.03);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   overflow-x: hidden;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-bg);
+}
+
+/* ── Light mode: text overrides ── */
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+[data-theme="light"] .text-\[\#a1a1aa\] {
+  color: #64748b !important;
+}
+[data-theme="light"] .text-\[\#71717a\] {
+  color: #64748b !important;
+}
+[data-theme="light"] .text-\[\#71717a\]\/40 {
+  color: rgba(100,116,139,0.4) !important;
+}
+[data-theme="light"] .hover\:text-white:hover {
+  color: #0f172a !important;
+}
+
+/* ── Light mode: glass backgrounds ── */
+[data-theme="light"] .bg-white\/5,
+[data-theme="light"] .bg-white\/\[0\.03\] {
+  background-color: rgba(0,0,0,0.03) !important;
+}
+[data-theme="light"] .bg-\[\#60a5fa\]\/10 {
+  background-color: rgba(37,99,235,0.1) !important;
+}
+[data-theme="light"] .bg-\[\#60a5fa\]\/20 {
+  background-color: rgba(37,99,235,0.15) !important;
+}
+[data-theme="light"] .bg-\[\#0a0a0a\]\/80 {
+  background-color: rgba(248,250,252,0.85) !important;
+}
+
+/* ── Light mode: borders ── */
+[data-theme="light"] .border-white\/10,
+[data-theme="light"] .border-white\/\[0\.08\],
+[data-theme="light"] .border-white\/5 {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] .border-white\/30 {
+  border-color: rgba(0,0,0,0.15) !important;
+}
+[data-theme="light"] .border-\[\#60a5fa\]\/40 {
+  border-color: rgba(37,99,235,0.3) !important;
+}
+[data-theme="light"] .border-\[\#60a5fa\]\/20 {
+  border-color: rgba(37,99,235,0.15) !important;
+}
+
+/* ── Light mode: CTA button ── */
+[data-theme="light"] .bg-\[\#60a5fa\] {
+  background-color: #2563eb !important;
+}
+[data-theme="light"] .hover\:bg-\[\#93c5fd\]:hover {
+  background-color: #3b82f6 !important;
+}
+[data-theme="light"] .text-\[\#0a0a0a\] {
+  color: #ffffff !important;
+}
+
+/* ── Light mode: glass-btn (Hero menu cards) ── */
+[data-theme="light"] .glass-btn {
+  background: rgba(0,0,0,0.03) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] .glass-btn:hover {
+  background: rgba(0,0,0,0.05) !important;
+  border-color: rgba(37,99,235,0.3) !important;
+}
+
+/* ── Light mode: experience timeline ── */
+[data-theme="light"] .exp-anchor > div {
+  background: #0f172a !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15) !important;
+}
+[data-theme="light"] .exp-card-body.exp-active {
+  border-color: rgba(0,0,0,0.15) !important;
+}
+[data-theme="light"] .exp-scroll-dot {
+  background-color: rgba(0,0,0,0.4) !important;
+}
+[data-theme="light"] .exp-hero-title {
+  text-shadow: 0 0 40px rgba(37,99,235,0.1) !important;
+}
+
+/* ── Light mode: project cards ── */
+[data-theme="light"] .proj-card:hover {
+  border-color: rgba(37,99,235,0.3) !important;
+}
+[data-theme="light"] .proj-hero-title {
+  text-shadow: 0 0 40px rgba(37,99,235,0.1) !important;
+}
+
+/* ── Light mode: explore button ── */
+[data-theme="light"] .explore-btn {
+  color: #0f172a !important;
+  border-color: rgba(37,99,235,0.3) !important;
+  background-color: rgba(37,99,235,0.08) !important;
+  box-shadow: 0 0 20px rgba(37,99,235,0.1), 0 0 60px rgba(37,99,235,0.03) !important;
+}
+[data-theme="light"] .explore-btn:hover {
+  background-color: rgba(37,99,235,0.12) !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+/* ── Light mode: role highlight ── */
+[data-theme="light"] .role-highlight {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* ── Light mode: lang switcher ── */
+[data-theme="light"] .lang-btn {
+  color: #64748b !important;
+}
+[data-theme="light"] .lang-btn:hover {
+  color: #0f172a !important;
+}
+[data-theme="light"] .lang-btn.active {
+  background-color: rgba(37,99,235,0.15) !important;
+  color: #2563eb !important;
+}
+[data-theme="light"] #lang-switcher {
+  background-color: rgba(0,0,0,0.03) !important;
+  border-color: rgba(0,0,0,0.08) !important;
 }
 
 @keyframes fade-in {
