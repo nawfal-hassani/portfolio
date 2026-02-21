@@ -156,20 +156,99 @@ import GlobeScene from './Globe/GlobeScene.tsx';
         <p class="text-[#71717a] text-sm italic" data-i18n="comingSoon">Coming soon...</p>
       </div>
 
-      <!-- Section: Experience (placeholder) -->
-      <div id="section-experience" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute">
-        <button class="section-back-btn flex items-center gap-2 text-[#71717a] hover:text-white text-xs mb-4 cursor-pointer transition-colors">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-          <span data-i18n="menuBack">Back to menu</span>
-        </button>
-        <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-3" data-i18n="menuExperience">Experience</p>
-        <p class="text-[#71717a] text-sm italic" data-i18n="comingSoon">Coming soon...</p>
-      </div>
+      <!-- Section: Experience — hidden here, actual content is in #exp-overlay -->
+      <div id="section-experience" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute" style="display:none;"></div>
 
     </div>
 
   </div>
 </section>
+
+<!-- Experience overlay — full page, own scroll -->
+<div id="exp-overlay" class="fixed inset-0 z-40 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-500" style="background: var(--theme-bg, #0a0a0a);">
+  <!-- Sticky back button -->
+  <div class="sticky top-0 z-10 px-6 pt-5 pb-3" style="background: linear-gradient(to bottom, var(--theme-bg, #0a0a0a) 60%, transparent);">
+    <button id="exp-back-btn" class="flex items-center gap-2 text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      <span data-i18n="menuBack">Back to menu</span>
+    </button>
+  </div>
+
+  <!-- Hero section — title at top center, globe goes to first dot below -->
+  <div id="exp-hero" class="flex flex-col items-center pt-10 md:pt-16 relative">
+    <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center exp-hero-title" style="color: var(--theme-text);" data-i18n="expLabel">Journey</h2>
+    <div class="mt-6 opacity-25">
+      <div class="w-5 h-8 rounded-full border-2 border-white/20 flex items-start justify-center pt-1.5">
+        <div class="w-1 h-1.5 rounded-full bg-white/40 exp-scroll-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Small spacer before timeline -->
+  <div style="height: 8vh;"></div>
+
+  <!-- Timeline content -->
+  <div id="exp-timeline" class="relative w-full max-w-4xl mx-auto px-6">
+
+    <!-- Center line -->
+    <div class="absolute left-1/2 -translate-x-1/2 top-[100px] bottom-0 w-[2px]" style="background: linear-gradient(to bottom, transparent, rgba(96,165,250,0.25) 5%, rgba(96,165,250,0.25) 95%, transparent);"></div>
+
+    <!-- Card 0: 2024 — left -->
+    <div class="exp-card flex items-center relative mb-16 md:mb-24">
+      <div class="exp-card-body w-[calc(50%-40px)] rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 md:p-6 transition-all duration-500 opacity-30 text-right">
+        <span class="font-mono text-[11px] uppercase tracking-widest font-bold" style="color: #f59e0b;" data-i18n="expYear1">2024</span>
+        <p class="text-sm md:text-base font-semibold mt-2" style="color: var(--theme-text);" data-i18n="expTitle1">Bac avec mention</p>
+        <p class="text-xs md:text-sm mt-2 leading-relaxed" style="color: var(--theme-text-muted);" data-i18n="expDesc1">Graduated high school with honors. The beginning of the adventure.</p>
+      </div>
+      <div class="exp-anchor w-20 flex items-center justify-center shrink-0 relative z-10">
+        <div class="w-3 h-3 rounded-full transition-all duration-500" style="background: #f59e0b; box-shadow: 0 0 10px rgba(245,158,11,0.6);"></div>
+      </div>
+      <div class="w-[calc(50%-40px)]"></div>
+    </div>
+
+    <!-- Card 1: 2024-2025 — right -->
+    <div class="exp-card flex items-center relative mb-16 md:mb-24">
+      <div class="w-[calc(50%-40px)]"></div>
+      <div class="exp-anchor w-20 flex items-center justify-center shrink-0 relative z-10">
+        <div class="w-3 h-3 rounded-full transition-all duration-500" style="background: #60a5fa; box-shadow: 0 0 10px rgba(96,165,250,0.6);"></div>
+      </div>
+      <div class="exp-card-body w-[calc(50%-40px)] rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 md:p-6 transition-all duration-500 opacity-30">
+        <span class="font-mono text-[11px] uppercase tracking-widest font-bold" style="color: #60a5fa;" data-i18n="expYear2">2024 — 2025</span>
+        <p class="text-sm md:text-base font-semibold mt-2" style="color: var(--theme-text);" data-i18n="expTitle2">Epitech Montpellier</p>
+        <p class="text-xs md:text-sm mt-2 leading-relaxed" style="color: var(--theme-text-muted);" data-i18n="expDesc2">1st & 2nd year — Grande École program. Deep-dive into C, algorithms, and full-stack development.</p>
+      </div>
+    </div>
+
+    <!-- Card 2: 2025 — left -->
+    <div class="exp-card flex items-center relative mb-16 md:mb-24">
+      <div class="exp-card-body w-[calc(50%-40px)] rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 md:p-6 transition-all duration-500 opacity-30 text-right">
+        <span class="font-mono text-[11px] uppercase tracking-widest font-bold" style="color: #10b981;" data-i18n="expYear3">2025</span>
+        <p class="text-sm md:text-base font-semibold mt-2" style="color: var(--theme-text);" data-i18n="expTitle3">Stage — JDC Occitanie</p>
+        <p class="text-xs md:text-sm mt-2 leading-relaxed" style="color: var(--theme-text-muted);" data-i18n="expDesc3">4-month internship as a web developer. Real-world full-stack experience.</p>
+      </div>
+      <div class="exp-anchor w-20 flex items-center justify-center shrink-0 relative z-10">
+        <div class="w-3 h-3 rounded-full transition-all duration-500" style="background: #10b981; box-shadow: 0 0 10px rgba(16,185,129,0.6);"></div>
+      </div>
+      <div class="w-[calc(50%-40px)]"></div>
+    </div>
+
+    <!-- Card 3: 2026 — right -->
+    <div class="exp-card flex items-center relative mb-16">
+      <div class="w-[calc(50%-40px)]"></div>
+      <div class="exp-anchor w-20 flex items-center justify-center shrink-0 relative z-10">
+        <div class="w-3 h-3 rounded-full transition-all duration-500" style="background: #a78bfa; box-shadow: 0 0 10px rgba(167,139,250,0.6);"></div>
+      </div>
+      <div class="exp-card-body w-[calc(50%-40px)] rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 md:p-6 transition-all duration-500 opacity-30">
+        <span class="font-mono text-[11px] uppercase tracking-widest font-bold" style="color: #a78bfa;" data-i18n="expYear4">2026</span>
+        <p class="text-sm md:text-base font-semibold mt-2" style="color: var(--theme-text);" data-i18n="expTitle4">Projects & Hackathons</p>
+        <p class="text-xs md:text-sm mt-2 leading-relaxed" style="color: var(--theme-text-muted);" data-i18n="expDesc4">GenAI Hackathon (1st place), Salon du Cheval redesign, SMS Dashboard. 3rd year at Epitech.</p>
+      </div>
+    </div>
+
+    <!-- Extra scroll space after last card to allow triggering the exit -->
+    <div style="height: 45vh;"></div>
+  </div>
+</div>
 
 <!-- Back button — fixed, always on top -->
 <button
@@ -269,6 +348,51 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
     transform: translateY(-1px);
   }
+
+  /* Experience hero */
+  .exp-hero-title {
+    text-shadow: 0 0 40px rgba(96, 165, 250, 0.15);
+  }
+
+  .exp-scroll-dot {
+    animation: exp-scroll-hint 1.5s ease-in-out infinite;
+  }
+
+  @keyframes exp-scroll-hint {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(8px); opacity: 0.3; }
+  }
+
+  /* Experience overlay: active card */
+  .exp-card-body.exp-active {
+    opacity: 1 !important;
+    border-color: rgba(255,255,255,0.2) !important;
+  }
+
+  #globe-area.exp-timeline-mode {
+    position: fixed !important;
+    z-index: 50;
+    pointer-events: none;
+    filter: drop-shadow(0 0 20px rgba(96,165,250,0.4));
+    transition: none !important;
+    overflow: hidden;
+    border-radius: 50%;
+    will-change: top, transform, filter;
+  }
+
+  #globe-area.exp-timeline-mode > div {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+
+  /* RTL */
+  [dir="rtl"] .exp-card {
+    flex-direction: row-reverse;
+  }
+  [dir="rtl"] .exp-card .text-right {
+    text-align: left;
+  }
 </style>
 
 <script>
@@ -325,16 +449,21 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       if (!isExploring) return;
       isExploring = false;
 
+      // Stop experience slideshow if running
+      stopExpSlideshow();
+
       exploreContent.style.opacity = '0';
       exploreContent.style.pointerEvents = 'none';
-
       // Reset to menu view for next explore (instant, no transition)
       sectionPanels.forEach(p => {
         (p as HTMLElement).classList.remove('active');
       });
       if (exploreMenu) exploreMenu.classList.remove('fade-out');
 
-      globeArea.style.transform = '';
+      // Only reset globe transform if not in timeline mode (GSAP handles it)
+      if (!globeArea.classList.contains('exp-timeline-mode')) {
+        globeArea.style.transform = '';
+      }
 
       heroText.style.opacity = '1';
       heroText.style.transform = '';
@@ -353,6 +482,11 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     function showSection(sectionId: string) {
       if (!exploreMenu) return;
+      stopExpSlideshow();
+      // Safety: ensure globe is restored if it was in timeline mode
+      if (globeArea && globeArea.classList.contains('exp-timeline-mode')) {
+        restoreGlobe();
+      }
       exploreMenu.classList.add('fade-out');
       setTimeout(() => {
         sectionPanels.forEach(p => {
@@ -363,11 +497,15 @@ import GlobeScene from './Globe/GlobeScene.tsx';
             panel.classList.remove('active');
           }
         });
+        if (sectionId === 'experience') {
+          setTimeout(startExpSlideshow, 300);
+        }
       }, 150);
     }
 
     function showMenu() {
       if (!exploreMenu) return;
+      stopExpSlideshow();
       sectionPanels.forEach(p => {
         (p as HTMLElement).classList.remove('active');
       });
@@ -395,8 +533,330 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     });
 
     document.querySelectorAll('.section-back-btn').forEach(btn => {
-      btn.addEventListener('click', showMenu);
+      btn.addEventListener('click', () => {
+        stopExpSlideshow();
+        showMenu();
+      });
     });
+
+    // ── Experience overlay: real globe animates to timeline ──
+    const expOverlay = document.getElementById('exp-overlay');
+    const expBodies = expOverlay ? expOverlay.querySelectorAll('.exp-card-body') as NodeListOf<HTMLElement> : [] as any;
+    const expAnchors = expOverlay ? expOverlay.querySelectorAll('.exp-anchor') as NodeListOf<HTMLElement> : [] as any;
+    const expBackBtn = document.getElementById('exp-back-btn');
+    let expActive = false;
+    let savedGlobeRect: DOMRect | null = null;
+    let savedGlobeTransform = '';
+
+    function updateExpHighlight() {
+      if (!expActive || !expOverlay) return;
+      const viewCenterY = window.innerHeight / 2;
+      let closestIdx = 0;
+      let closestDist = Infinity;
+      expAnchors.forEach((anchor: HTMLElement, i: number) => {
+        const r = anchor.getBoundingClientRect();
+        const dist = Math.abs(r.top + r.height / 2 - viewCenterY);
+        if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+      });
+      expBodies.forEach((body: HTMLElement, i: number) => {
+        if (i === closestIdx) body.classList.add('exp-active');
+        else body.classList.remove('exp-active');
+      });
+    }
+
+    // Smooth globe tracking with spring physics + rAF
+    let globeCurrentY = 0;
+    let globeTargetY = 0;
+    let rafId: number | null = null;
+    let gsapDone = false;
+    let springVelocity = 0;
+    const SPRING_STIFFNESS = 0.045;
+    const SPRING_DAMPING = 0.86;
+
+    function getGlobeTargetY() {
+      if (!expOverlay || expAnchors.length === 0) return window.innerHeight / 2;
+      const viewCenterY = window.innerHeight / 2;
+      // Find the CLOSEST anchor to viewport center
+      let closestY = viewCenterY;
+      let closestDist = Infinity;
+      expAnchors.forEach((anchor: HTMLElement) => {
+        const r = anchor.getBoundingClientRect();
+        const y = r.top + r.height / 2;
+        const dist = Math.abs(y - viewCenterY);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestY = y;
+        }
+      });
+      return closestY;
+    }
+
+    function animateGlobe() {
+      if (!expActive || !globeArea || !gsapDone) { rafId = null; return; }
+
+      globeTargetY = getGlobeTargetY();
+
+      // Spring physics: force + damping
+      const displacement = globeTargetY - globeCurrentY;
+      const springForce = displacement * SPRING_STIFFNESS;
+      springVelocity = (springVelocity + springForce) * SPRING_DAMPING;
+      globeCurrentY += springVelocity;
+
+      // Subtle scale: gentle stretch when moving
+      const speed = Math.abs(springVelocity);
+      const scale = 1 + Math.min(speed * 0.003, 0.06);
+      // Subtle glow: soft intensify with speed
+      const glowBase = 20;
+      const glowExtra = Math.min(speed * 0.8, 15);
+      const glowAlpha = (0.4 + Math.min(speed * 0.008, 0.15)).toFixed(2);
+
+      const centerX = window.innerWidth / 2;
+      globeArea.style.left = `${centerX - 40}px`;
+      globeArea.style.top = `${globeCurrentY - 40}px`;
+      globeArea.style.transform = `scale(${scale.toFixed(3)})`;
+      globeArea.style.filter = `drop-shadow(0 0 ${glowBase + glowExtra}px rgba(96,165,250,${glowAlpha}))`;
+
+      updateExpHighlight();
+
+      // Keep animating until settled
+      if (Math.abs(springVelocity) > 0.2 || Math.abs(displacement) > 0.5) {
+        rafId = requestAnimationFrame(animateGlobe);
+      } else {
+        springVelocity = 0;
+        globeArea.style.transform = 'none';
+        globeArea.style.filter = 'drop-shadow(0 0 20px rgba(96,165,250,0.4))';
+        rafId = null;
+      }
+    }
+
+    let launchTriggered = false;
+    let launchTimer: ReturnType<typeof setTimeout> | null = null;
+
+    async function launchGlobeIntoVoid() {
+      if (launchTriggered || !globeArea || !expOverlay) return;
+      launchTriggered = true;
+
+      // Stop spring animation immediately
+      expActive = false;
+      gsapDone = false;
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+
+      const gsap = (await import('gsap')).default;
+
+      // Freeze scroll
+      expOverlay.style.overflow = 'hidden';
+
+      // Fade out overlay content (cards, line, back button)
+      gsap.to(expOverlay, {
+        opacity: 0,
+        duration: 0.6,
+        delay: 0.15,
+        ease: 'power2.in',
+      });
+
+      // Globe: accelerate downward + shrink + intense glow → vanish
+      const currentTop = parseFloat(globeArea.style.top) || window.innerHeight / 2;
+      gsap.to(globeArea, {
+        top: currentTop + window.innerHeight + 200,
+        scale: 0.15,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.in',
+        onUpdate: function() {
+          const progress = this.progress();
+          const glow = 20 + progress * 50;
+          const alpha = (0.4 + progress * 0.5).toFixed(2);
+          globeArea!.style.filter = `drop-shadow(0 0 ${glow}px rgba(96,165,250,${alpha}))`;
+        },
+        onComplete: () => {
+          // Reset everything
+          expBodies.forEach((b: HTMLElement) => {
+            b.style.transition = '';
+            b.style.opacity = '';
+          });
+          expOverlay!.style.overflow = '';
+          globeArea!.style.scale = '';
+          globeArea!.style.opacity = '';
+          closeExpOverlay();
+          showMenu();
+          launchTriggered = false;
+        }
+      });
+    }
+
+    function onExpScroll() {
+      if (!expActive || launchTriggered) return;
+
+      // Hero parallax fade
+      const expHero = document.getElementById('exp-hero');
+      if (expHero && expOverlay) {
+        const scrollTop = expOverlay.scrollTop;
+        const heroHeight = expHero.offsetHeight;
+        const progress = Math.min(1, scrollTop / (heroHeight * 0.5));
+        expHero.style.opacity = String(1 - progress);
+        expHero.style.transform = `translateY(${-scrollTop * 0.3}px)`;
+      }
+
+      // Detect when last card becomes active → schedule launch after delay
+      if (gsapDone && expAnchors.length > 0) {
+        const viewCenterY = window.innerHeight / 2;
+        let closestIdx = 0;
+        let closestDist = Infinity;
+        expAnchors.forEach((a: HTMLElement, i: number) => {
+          const d = Math.abs(a.getBoundingClientRect().top + a.getBoundingClientRect().height / 2 - viewCenterY);
+          if (d < closestDist) { closestDist = d; closestIdx = i; }
+        });
+        const isLastActive = closestIdx === expAnchors.length - 1;
+
+        if (isLastActive && !launchTimer) {
+          // Last card just became active — schedule launch in 1.5s
+          launchTimer = setTimeout(() => {
+            if (expActive && !launchTriggered) {
+              launchGlobeIntoVoid();
+            }
+          }, 2000);
+        } else if (!isLastActive && launchTimer) {
+          // User scrolled back up — cancel the timer
+          clearTimeout(launchTimer);
+          launchTimer = null;
+        }
+      }
+
+      if (!gsapDone) return;
+      globeTargetY = getGlobeTargetY();
+      if (rafId === null) {
+        rafId = requestAnimationFrame(animateGlobe);
+      }
+    }
+
+    let scrollHandler: (() => void) | null = null;
+    let activeTween: any = null;
+
+    async function openExpOverlay() {
+      if (!expOverlay || !globeArea) return;
+      expActive = true;
+
+      // Save globe state
+      savedGlobeRect = globeArea.getBoundingClientRect();
+      savedGlobeTransform = globeArea.style.transform || '';
+
+      // Show overlay
+      expOverlay.style.opacity = '1';
+      expOverlay.style.pointerEvents = 'auto';
+      expOverlay.scrollTop = 0;
+
+      // Globe → fixed at its current explore position
+      globeArea.classList.add('exp-timeline-mode');
+      globeArea.style.left = `${savedGlobeRect.left}px`;
+      globeArea.style.top = `${savedGlobeRect.top}px`;
+      globeArea.style.width = `${savedGlobeRect.width}px`;
+      globeArea.style.height = `${savedGlobeRect.height}px`;
+      globeArea.style.transform = 'none';
+
+      gsapDone = false;
+      springVelocity = 0;
+      launchTriggered = false;
+      if (launchTimer) { clearTimeout(launchTimer); launchTimer = null; }
+
+      // Hide global back button (overlay has its own)
+      backBtn.style.opacity = '0';
+      backBtn.style.pointerEvents = 'none';
+
+      // Wait for overlay layout
+      await new Promise(r => setTimeout(r, 100));
+      expOverlay.scrollTop = 0;
+
+      // Read first anchor position
+      const gsap = (await import('gsap')).default;
+      const rect = expAnchors[0]?.getBoundingClientRect();
+      const anchorY = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
+      const targetX = window.innerWidth / 2 - 40;
+      const targetY = anchorY - 40;
+
+      // Smooth animation from explore position to first orange dot
+      activeTween = gsap.to(globeArea, {
+        left: targetX,
+        top: targetY,
+        width: 80,
+        height: 80,
+        duration: 0.9,
+        ease: 'power2.out',
+        onComplete: () => {
+          globeCurrentY = targetY + 40;
+          globeTargetY = targetY + 40;
+          springVelocity = 0;
+          gsapDone = true;
+        }
+      });
+
+      // Set up scroll handler
+      if (scrollHandler) expOverlay.removeEventListener('scroll', scrollHandler);
+      scrollHandler = onExpScroll;
+      expOverlay.addEventListener('scroll', scrollHandler, { passive: true });
+      expBodies[0]?.classList.add('exp-active');
+    }
+
+    function restoreGlobe() {
+      if (!globeArea) return;
+      // Kill GSAP tween synchronously to prevent it from re-applying stale styles
+      if (activeTween) { activeTween.kill(); activeTween = null; }
+      globeArea.classList.remove('exp-timeline-mode');
+      globeArea.style.left = '';
+      globeArea.style.top = '';
+      globeArea.style.width = '';
+      globeArea.style.height = '';
+      globeArea.style.filter = '';
+      globeArea.style.opacity = '';
+      globeArea.style.scale = '';
+      globeArea.style.transform = savedGlobeTransform;
+    }
+
+    async function closeExpOverlay() {
+      if (!expOverlay || !globeArea) return;
+
+      const wasInTimeline = globeArea.classList.contains('exp-timeline-mode');
+
+      expActive = false;
+
+      // Clean up rAF, scroll listener, timer, and reset flags
+      gsapDone = false;
+      springVelocity = 0;
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+      if (scrollHandler) { expOverlay.removeEventListener('scroll', scrollHandler); scrollHandler = null; }
+      if (launchTimer) { clearTimeout(launchTimer); launchTimer = null; }
+
+      expBodies.forEach((b: HTMLElement) => b.classList.remove('exp-active'));
+
+      // Reset hero section
+      const expHero = document.getElementById('exp-hero');
+      if (expHero) {
+        expHero.style.opacity = '1';
+        expHero.style.transform = '';
+      }
+
+      // Only restore globe if it was actually in timeline mode
+      if (wasInTimeline) {
+        restoreGlobe();
+        // Show global back button again
+        backBtn.style.opacity = '1';
+        backBtn.style.pointerEvents = 'auto';
+      }
+
+      // Hide overlay
+      expOverlay.style.opacity = '0';
+      expOverlay.style.pointerEvents = 'none';
+    }
+
+    // Wire exp back button
+    if (expBackBtn) {
+      expBackBtn.addEventListener('click', () => {
+        closeExpOverlay();
+        showMenu();
+      });
+    }
+
+    function startExpSlideshow() { openExpOverlay(); }
+    function stopExpSlideshow() { closeExpOverlay(); }
 
     // Discord copy username
     const discordBtn = document.getElementById('discord-btn');
