@@ -345,7 +345,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     </div>
 
     <!-- Project 3: SMS Dashboard -->
-    <div class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <div id="dashboard-card" class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden cursor-pointer">
       <div class="h-48 bg-white/[0.03] flex items-center justify-center border-b border-white/5 overflow-hidden">
         <img src="/dashboard-sms.png" alt="SMS Dashboard" class="w-full h-full object-cover object-top" />
       </div>
@@ -462,6 +462,112 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">JavaScript</span>
       <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">PHP</span>
       <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Figma</span>
+    </div>
+  </div>
+</div>
+
+<!-- SMS Dashboard detail overlay -->
+<div id="dashboard-detail" class="fixed inset-0 z-50 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-500" style="background: var(--theme-bg, #0a0a0a);">
+  <!-- Sticky back button -->
+  <div class="sticky top-0 z-10 px-6 pt-5 pb-3" style="background: linear-gradient(to bottom, var(--theme-bg, #0a0a0a) 60%, transparent);">
+    <button id="dashboard-back-btn" class="flex items-center gap-2 text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      <span data-i18n="dashBack">Back to projects</span>
+    </button>
+  </div>
+
+  <div class="w-full max-w-4xl mx-auto px-6 pt-6 pb-24">
+    <!-- Hero image -->
+    <div class="rounded-2xl overflow-hidden mb-8 border border-white/10">
+      <img src="/dashboard-sms/dashboard-overview.png" alt="SMS Dashboard Overview" class="w-full object-cover" />
+    </div>
+
+    <!-- Title & intro -->
+    <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color: var(--theme-text);" data-i18n="projTitle3">SMS Dashboard</h2>
+    <div class="flex flex-wrap gap-3 mb-6">
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#60a5fa]/15 text-[#60a5fa] border border-[#60a5fa]/25" data-i18n="projBadge3">Full-Stack</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/25" data-i18n="dashInternship">Internship — JDC Occitanie</span>
+    </div>
+    <p class="text-base md:text-lg leading-relaxed mb-12" style="color: var(--theme-text-muted);" data-i18n="dashIntro">A full-stack SMS management platform built during my internship at JDC Occitanie. The dashboard allows administrators to send, schedule, and monitor SMS campaigns with real-time analytics, bulk sending, purchase management, and full theme customization.</p>
+
+    <!-- Section: Dashboard Overview -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="dashOverviewTitle">Real-Time Analytics Dashboard</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="dashOverviewDesc">The main dashboard displays key metrics at a glance: total SMS sent, delivered, failed, and success rate. Includes a 7-day chart of sent messages, SMS type distribution, daily success rate, and API status monitoring.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/dashboard-sms/dashboard-overview.png" alt="Dashboard overview" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Send & Schedule -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="dashScheduleTitle">SMS Scheduling</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="dashScheduleDesc">Schedule SMS in advance by setting the recipient phone number, date, time, and message content. View all planned messages in a table with status tracking and action controls.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/dashboard-sms/planification-sms.png" alt="SMS scheduling" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Bulk Sending -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="dashBulkTitle">Bulk SMS Sending</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="dashBulkDesc">Upload a CSV or Excel file to send SMS in bulk. The system accepts files with phone numbers, message content, and optional recipient names. A template CSV is available for download.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/dashboard-sms/envoi-groupe.png" alt="Bulk SMS sending" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: History -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="dashHistoryTitle">Message History</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="dashHistoryDesc">Complete log of all sent messages with date/time, type (SMS or Token), recipient, content, and delivery status. Filterable and exportable for reporting.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/dashboard-sms/historique-envois.png" alt="Message history" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Purchase SMS Packs -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="dashPurchaseTitle">SMS Credit Purchase</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="dashPurchaseDesc">Integrated billing system with multiple SMS packs (100 to 5,000+). Secure payment, subscription management, invoice history, and usage alerts — all in one place.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/dashboard-sms/achat-sms-4packs.png" alt="SMS credit purchase" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Appearance Customization -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="dashThemeTitle">Theme Customization</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="dashThemeDesc">Full appearance settings with light/dark/system theme toggle and 5 accent color choices. The entire dashboard adapts in real time to the selected theme and color.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <img src="/dashboard-sms/apparence-clair.png" alt="Light theme settings" class="w-full object-cover" />
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <img src="/dashboard-sms/apparence-sombre.png" alt="Dark theme settings" class="w-full object-cover" />
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/dashboard-sms/dashboard-theme-custom.png" alt="Dashboard with custom theme" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Admin -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="dashAdminTitle">User Administration</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="dashAdminDesc">Admin panel for managing user accounts: create, edit, and delete users with role-based access control (Admin, User). View all registered users with their email, phone number, and assigned role.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/dashboard-sms/administration-utilisateurs.png" alt="User administration" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Tech stack -->
+    <div class="flex flex-wrap gap-2">
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">React</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Node.js</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">PostgreSQL</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">REST API</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">JWT Auth</span>
     </div>
   </div>
 </div>
@@ -629,6 +735,11 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
   /* RTL: flip salon-back-btn arrow */
   [dir="rtl"] #salon-back-btn svg {
+    transform: scaleX(-1);
+  }
+
+  /* RTL: flip dashboard-back-btn arrow */
+  [dir="rtl"] #dashboard-back-btn svg {
     transform: scaleX(-1);
   }
 
@@ -861,6 +972,36 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     if (salonBackBtn) {
       salonBackBtn.addEventListener('click', () => {
         closeSalonDetail();
+      });
+    }
+
+    // ── SMS Dashboard detail overlay ──
+    const dashboardDetail = document.getElementById('dashboard-detail');
+    const dashboardBackBtn = document.getElementById('dashboard-back-btn');
+    const dashboardCard = document.getElementById('dashboard-card');
+
+    function openDashboardDetail() {
+      if (!dashboardDetail) return;
+      dashboardDetail.style.opacity = '1';
+      dashboardDetail.style.pointerEvents = 'auto';
+      dashboardDetail.scrollTop = 0;
+    }
+
+    function closeDashboardDetail() {
+      if (!dashboardDetail) return;
+      dashboardDetail.style.opacity = '0';
+      dashboardDetail.style.pointerEvents = 'none';
+    }
+
+    if (dashboardCard) {
+      dashboardCard.addEventListener('click', () => {
+        openDashboardDetail();
+      });
+    }
+
+    if (dashboardBackBtn) {
+      dashboardBackBtn.addEventListener('click', () => {
+        closeDashboardDetail();
       });
     }
 
