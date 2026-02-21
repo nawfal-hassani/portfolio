@@ -321,7 +321,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     </div>
 
     <!-- Project 2: Salon du Cheval -->
-    <div class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <div id="salon-card" class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden cursor-pointer">
       <div class="h-48 bg-white/[0.03] flex items-center justify-center border-b border-white/5 overflow-hidden">
         <img src="/salon-du-cheval.png" alt="Salon du Cheval de Paris" class="w-full h-full object-cover" />
       </div>
@@ -330,7 +330,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
           <h3 class="text-lg font-semibold" style="color: var(--theme-text);" data-i18n="projTitle2">Salon du Cheval de Paris</h3>
           <span class="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/25" data-i18n="projBadge2">Redesign</span>
         </div>
-        <p class="text-sm leading-relaxed mb-4" style="color: var(--theme-text-muted);" data-i18n="projDesc2">Complete website redesign proposed to VEL, organizer of the Salon du Cheval de Paris. 1-week Project Week in a team of 3 designers (EartSup) + 3 developers (Epitech).</p>
+        <p class="text-sm leading-relaxed mb-4" style="color: var(--theme-text-muted);" data-i18n="projDesc2">Complete redesign proposed to VEL, organizer of the Salon du Cheval de Paris (70,000+ visitors/year). 1-week Project Week: new website, mobile app, logo, and merch.</p>
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">HTML</span>
           <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">CSS</span>
@@ -379,6 +379,82 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- Salon du Cheval detail overlay -->
+<div id="salon-detail" class="fixed inset-0 z-50 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-500" style="background: var(--theme-bg, #0a0a0a);">
+  <!-- Sticky back button -->
+  <div class="sticky top-0 z-10 px-6 pt-5 pb-3" style="background: linear-gradient(to bottom, var(--theme-bg, #0a0a0a) 60%, transparent);">
+    <button id="salon-back-btn" class="flex items-center gap-2 text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      <span data-i18n="salonBack">Back to projects</span>
+    </button>
+  </div>
+
+  <div class="w-full max-w-4xl mx-auto px-6 pt-6 pb-24">
+    <!-- Hero image -->
+    <div class="rounded-2xl overflow-hidden mb-8 border border-white/10">
+      <img src="/salon-du-cheval/ancien-logo.png" alt="Salon du Cheval de Paris" class="w-full object-cover" />
+    </div>
+
+    <!-- Title & intro -->
+    <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color: var(--theme-text);">Salon du Cheval de Paris</h2>
+    <div class="flex flex-wrap gap-3 mb-6">
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/25" data-i18n="projBadge2">Redesign</span>
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/25" data-i18n="salonVisitors">70,000+ visitors/year</span>
+    </div>
+    <p class="text-base md:text-lg leading-relaxed mb-12" style="color: var(--theme-text-muted);" data-i18n="salonIntro">1-week Project Week in a team of 3 designers (EartSup) + 3 developers (Epitech). We proposed a complete redesign to VEL, organizer of the Salon du Cheval de Paris — one of the largest equestrian events in Europe with over 70,000 visitors each year. Our work covered a new visual identity, a redesigned website, a mobile app for visitor circulation, and a full merchandise line.</p>
+
+    <!-- Section: New Logo -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="salonLogoTitle">New Logo & Visual Identity</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="salonLogoDesc">Complete rebrand designed by the EartSup designers. Three logo variants were created: a compact icon for small spaces, a typographic version for brand clarity, and a combined version for primary use across all media.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/salon-du-cheval/nouveau-logo.png" alt="New logo variants" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Website -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="salonSiteTitle">Website Redesign</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="salonSiteDesc">A complete redesign of the official website with a modern, immersive interface. Features include a countdown to the event, online ticketing, program schedule, and all practical information for visitors.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/salon-du-cheval/nouveau-site.png" alt="New website design" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Mobile App -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="salonAppTitle">Mobile App — Visitor Circulation</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="salonAppDesc">A mobile application designed to improve visitor flow across the venue. Features an interactive map of the event, real-time push notifications for upcoming competitions and shows, and easy navigation between exhibition halls.</p>
+      <div class="rounded-2xl overflow-hidden border border-white/10">
+        <img src="/salon-du-cheval/application.png" alt="Mobile application" class="w-full object-cover" />
+      </div>
+    </div>
+
+    <!-- Section: Merchandise -->
+    <div class="mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold mb-3" style="color: var(--theme-text);" data-i18n="salonMerchTitle">Merchandise Collection</h3>
+      <p class="text-sm md:text-base leading-relaxed mb-5" style="color: var(--theme-text-muted);" data-i18n="salonMerchDesc">A full branded merchandise line designed for different audiences: Sportif, VIP, Famille, and Exposants. Includes t-shirts, caps, and equestrian equipment (saddle pads) — all featuring the new visual identity.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <img src="/salon-du-cheval/merch-habit.png" alt="Merchandise — T-shirts" class="w-full object-cover" />
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10">
+          <img src="/salon-du-cheval/merch-equestre.png" alt="Merchandise — Equestrian equipment" class="w-full object-cover" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech stack -->
+    <div class="flex flex-wrap gap-2">
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">HTML</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">CSS</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">JavaScript</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">PHP</span>
+      <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Figma</span>
+    </div>
   </div>
 </div>
 
@@ -540,6 +616,11 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
   /* RTL: flip proj-back-btn arrow */
   [dir="rtl"] #proj-back-btn svg {
+    transform: scaleX(-1);
+  }
+
+  /* RTL: flip salon-back-btn arrow */
+  [dir="rtl"] #salon-back-btn svg {
     transform: scaleX(-1);
   }
 
@@ -742,6 +823,36 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       projBackBtn.addEventListener('click', () => {
         closeProjOverlay();
         showMenu();
+      });
+    }
+
+    // ── Salon du Cheval detail overlay ──
+    const salonDetail = document.getElementById('salon-detail');
+    const salonBackBtn = document.getElementById('salon-back-btn');
+    const salonCard = document.getElementById('salon-card');
+
+    function openSalonDetail() {
+      if (!salonDetail) return;
+      salonDetail.style.opacity = '1';
+      salonDetail.style.pointerEvents = 'auto';
+      salonDetail.scrollTop = 0;
+    }
+
+    function closeSalonDetail() {
+      if (!salonDetail) return;
+      salonDetail.style.opacity = '0';
+      salonDetail.style.pointerEvents = 'none';
+    }
+
+    if (salonCard) {
+      salonCard.addEventListener('click', () => {
+        openSalonDetail();
+      });
+    }
+
+    if (salonBackBtn) {
+      salonBackBtn.addEventListener('click', () => {
+        closeSalonDetail();
       });
     }
 
