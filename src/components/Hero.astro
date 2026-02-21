@@ -154,61 +154,283 @@ import GlobeScene from './Globe/GlobeScene.tsx';
         </button>
         <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-3" data-i18n="menuProjects">Projects</p>
 
-        <!-- Project 1: GenAI Hackathon -->
-        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-9 h-9 rounded-xl bg-[#f59e0b]/10 border border-[#f59e0b]/20 flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0 0 16.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.023 6.023 0 0 1-7.54 0"/></svg>
+        <!-- Project 1: GenAI Hackathon — Browser mockup -->
+        <div class="device-mockup rounded-xl border border-white/10 overflow-hidden backdrop-blur-md">
+          <div class="flex items-center gap-2 px-3 py-2 bg-white/5 border-b border-white/10">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
             </div>
-            <div>
-              <p class="text-white text-sm font-medium" data-i18n="projTitle1">GenAI Hackathon</p>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#f59e0b]/10 text-[#f59e0b] border border-[#f59e0b]/20" data-i18n="projBadge1">1st Place</span>
+            <div class="flex-1 mx-2">
+              <div class="bg-white/5 rounded-md px-3 py-0.5 text-[10px] text-[#71717a] font-mono text-center">genai-hackathon.app</div>
             </div>
           </div>
-          <p class="text-[#a1a1aa] text-xs leading-relaxed" data-i18n="projDesc1">AI-powered application built during a 48h hackathon. Team project combining generative AI with a practical use case.</p>
-          <div class="flex flex-wrap gap-1.5 mt-3">
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">Python</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">React</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">AI/ML</span>
+          <div class="p-4" style="background: linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.02) 100%);">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/20" data-i18n="projBadge1">1st Place</span>
+            </div>
+            <p class="text-white text-sm font-semibold mb-1.5" data-i18n="projTitle1">GenAI Hackathon</p>
+            <p class="text-[#a1a1aa] text-xs leading-relaxed mb-3" data-i18n="projDesc1">AI-powered application built during a 48h hackathon. Team project combining generative AI with a practical use case.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#f59e0b]/10 text-[#f59e0b]/80 border border-[#f59e0b]/15">Python</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#f59e0b]/10 text-[#f59e0b]/80 border border-[#f59e0b]/15">React</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#f59e0b]/10 text-[#f59e0b]/80 border border-[#f59e0b]/15">AI/ML</span>
+            </div>
           </div>
         </div>
 
-        <!-- Project 2: Salon du Cheval -->
-        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-9 h-9 rounded-xl bg-[#60a5fa]/10 border border-[#60a5fa]/20 flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4 text-[#60a5fa]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+        <!-- Project 2: Salon du Cheval — Browser mockup -->
+        <div class="device-mockup rounded-xl border border-white/10 overflow-hidden backdrop-blur-md">
+          <div class="flex items-center gap-2 px-3 py-2 bg-white/5 border-b border-white/10">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
             </div>
-            <div>
-              <p class="text-white text-sm font-medium" data-i18n="projTitle2">Salon du Cheval</p>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20" data-i18n="projBadge2">Redesign</span>
+            <div class="flex-1 mx-2">
+              <div class="bg-white/5 rounded-md px-3 py-0.5 text-[10px] text-[#71717a] font-mono text-center">salon-du-cheval.fr</div>
             </div>
           </div>
-          <p class="text-[#a1a1aa] text-xs leading-relaxed" data-i18n="projDesc2">Complete website redesign for a horse show event. Modern UI with booking system and event management.</p>
-          <div class="flex flex-wrap gap-1.5 mt-3">
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">Next.js</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">TypeScript</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">Tailwind</span>
+          <div class="p-4" style="background: linear-gradient(135deg, rgba(96,165,250,0.08) 0%, rgba(96,165,250,0.02) 100%);">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#60a5fa]/15 text-[#60a5fa] border border-[#60a5fa]/20" data-i18n="projBadge2">Redesign</span>
+            </div>
+            <p class="text-white text-sm font-semibold mb-1.5" data-i18n="projTitle2">Salon du Cheval</p>
+            <p class="text-[#a1a1aa] text-xs leading-relaxed mb-3" data-i18n="projDesc2">Complete website redesign for a horse show event. Modern UI with booking system and event management.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#60a5fa]/10 text-[#60a5fa]/80 border border-[#60a5fa]/15">Next.js</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#60a5fa]/10 text-[#60a5fa]/80 border border-[#60a5fa]/15">TypeScript</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#60a5fa]/10 text-[#60a5fa]/80 border border-[#60a5fa]/15">Tailwind</span>
+            </div>
           </div>
         </div>
 
-        <!-- Project 3: SMS Dashboard -->
-        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-9 h-9 rounded-xl bg-[#10b981]/10 border border-[#10b981]/20 flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4 text-[#10b981]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
+        <!-- Project 3: SMS Dashboard — Browser mockup -->
+        <div class="device-mockup rounded-xl border border-white/10 overflow-hidden backdrop-blur-md">
+          <div class="flex items-center gap-2 px-3 py-2 bg-white/5 border-b border-white/10">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
             </div>
-            <div>
-              <p class="text-white text-sm font-medium" data-i18n="projTitle3">SMS Dashboard</p>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20" data-i18n="projBadge3">Full-Stack</span>
+            <div class="flex-1 mx-2">
+              <div class="bg-white/5 rounded-md px-3 py-0.5 text-[10px] text-[#71717a] font-mono text-center">sms-dashboard.dev</div>
             </div>
           </div>
-          <p class="text-[#a1a1aa] text-xs leading-relaxed" data-i18n="projDesc3">Dashboard for managing and monitoring SMS campaigns. Real-time analytics and message tracking.</p>
-          <div class="flex flex-wrap gap-1.5 mt-3">
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">Node.js</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">React</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#71717a] border border-white/10">MongoDB</span>
+          <div class="p-4" style="background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(16,185,129,0.02) 100%);">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/20" data-i18n="projBadge3">Full-Stack</span>
+            </div>
+            <p class="text-white text-sm font-semibold mb-1.5" data-i18n="projTitle3">SMS Dashboard</p>
+            <p class="text-[#a1a1aa] text-xs leading-relaxed mb-3" data-i18n="projDesc3">Dashboard for managing and monitoring SMS campaigns. Real-time analytics and message tracking.</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#10b981]/10 text-[#10b981]/80 border border-[#10b981]/15">Node.js</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#10b981]/10 text-[#10b981]/80 border border-[#10b981]/15">React</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#10b981]/10 text-[#10b981]/80 border border-[#10b981]/15">MongoDB</span>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Project Detail 1: GenAI Hackathon -->
+      <div id="proj-detail-1" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute">
+        <button class="proj-back-btn flex items-center gap-2 text-[#71717a] hover:text-white text-xs mb-2 cursor-pointer transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span data-i18n="menuBack">Back to menu</span>
+        </button>
+        <!-- Large browser mockup with fake AI chat UI -->
+        <div class="rounded-xl border border-white/10 overflow-hidden">
+          <div class="flex items-center gap-2 px-3 py-2 bg-white/5 border-b border-white/10">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
+            </div>
+            <div class="flex-1 mx-2">
+              <div class="bg-white/5 rounded-md px-3 py-0.5 text-[10px] text-[#71717a] font-mono text-center">genai-hackathon.app</div>
+            </div>
+          </div>
+          <div class="p-3" style="background: linear-gradient(135deg, rgba(245,158,11,0.06) 0%, rgba(10,10,10,0.9) 100%); min-height: 120px;">
+            <!-- Fake AI chat UI -->
+            <div class="flex flex-col gap-2">
+              <div class="flex gap-2 items-start">
+                <div class="w-5 h-5 rounded-full bg-[#f59e0b]/20 shrink-0 mt-0.5"></div>
+                <div class="bg-white/5 rounded-lg rounded-tl-none px-2.5 py-1.5 max-w-[75%]">
+                  <div class="h-1.5 w-24 bg-white/10 rounded-full mb-1"></div>
+                  <div class="h-1.5 w-16 bg-white/10 rounded-full"></div>
+                </div>
+              </div>
+              <div class="flex gap-2 items-start justify-end">
+                <div class="bg-[#f59e0b]/15 rounded-lg rounded-tr-none px-2.5 py-1.5 max-w-[75%]">
+                  <div class="h-1.5 w-20 bg-[#f59e0b]/20 rounded-full mb-1"></div>
+                  <div class="h-1.5 w-28 bg-[#f59e0b]/20 rounded-full"></div>
+                </div>
+                <div class="w-5 h-5 rounded-full bg-[#60a5fa]/20 shrink-0 mt-0.5"></div>
+              </div>
+              <div class="flex gap-2 items-start">
+                <div class="w-5 h-5 rounded-full bg-[#f59e0b]/20 shrink-0 mt-0.5"></div>
+                <div class="bg-white/5 rounded-lg rounded-tl-none px-2.5 py-1.5 max-w-[75%]">
+                  <div class="h-1.5 w-32 bg-white/10 rounded-full mb-1"></div>
+                  <div class="h-1.5 w-20 bg-white/10 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2 flex gap-2">
+              <div class="flex-1 h-7 rounded-lg bg-white/5 border border-white/10"></div>
+              <div class="w-7 h-7 rounded-lg bg-[#f59e0b]/15 border border-[#f59e0b]/20"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Info -->
+        <div class="flex items-center gap-2 mt-1">
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/20" data-i18n="projBadge1">1st Place</span>
+        </div>
+        <h3 class="text-white text-lg font-bold" data-i18n="projTitle1">GenAI Hackathon</h3>
+        <p class="text-[#a1a1aa] text-xs leading-relaxed" data-i18n="projDetailDesc1">AI-powered application built during a 48h hackathon. Our team combined generative AI models with a real-world use case to deliver an innovative solution. We won 1st place among all competing teams.</p>
+        <div class="mt-1">
+          <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-2" data-i18n="projFeatLabel">Key Features</p>
+          <ul class="text-[#a1a1aa] text-xs leading-relaxed flex flex-col gap-1.5">
+            <li class="flex items-start gap-2"><span class="text-[#f59e0b] mt-0.5">&#9670;</span><span data-i18n="projFeat1a">Real-time AI text generation</span></li>
+            <li class="flex items-start gap-2"><span class="text-[#f59e0b] mt-0.5">&#9670;</span><span data-i18n="projFeat1b">Custom-trained model pipeline</span></li>
+            <li class="flex items-start gap-2"><span class="text-[#f59e0b] mt-0.5">&#9670;</span><span data-i18n="projFeat1c">Collaborative team of 4 developers</span></li>
+          </ul>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mt-2">
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#f59e0b]/10 text-[#f59e0b]/80 border border-[#f59e0b]/15">Python</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#f59e0b]/10 text-[#f59e0b]/80 border border-[#f59e0b]/15">React</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#f59e0b]/10 text-[#f59e0b]/80 border border-[#f59e0b]/15">AI/ML</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#f59e0b]/10 text-[#f59e0b]/80 border border-[#f59e0b]/15">FastAPI</span>
+        </div>
+      </div>
+
+      <!-- Project Detail 2: Salon du Cheval -->
+      <div id="proj-detail-2" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute">
+        <button class="proj-back-btn flex items-center gap-2 text-[#71717a] hover:text-white text-xs mb-2 cursor-pointer transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span data-i18n="menuBack">Back to menu</span>
+        </button>
+        <!-- Large browser mockup with fake website UI -->
+        <div class="rounded-xl border border-white/10 overflow-hidden">
+          <div class="flex items-center gap-2 px-3 py-2 bg-white/5 border-b border-white/10">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
+            </div>
+            <div class="flex-1 mx-2">
+              <div class="bg-white/5 rounded-md px-3 py-0.5 text-[10px] text-[#71717a] font-mono text-center">salon-du-cheval.fr</div>
+            </div>
+          </div>
+          <div class="p-3" style="background: linear-gradient(135deg, rgba(96,165,250,0.06) 0%, rgba(10,10,10,0.9) 100%); min-height: 120px;">
+            <!-- Fake website UI -->
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-white/5">
+              <div class="h-2 w-16 bg-[#60a5fa]/20 rounded-full"></div>
+              <div class="flex gap-3">
+                <div class="h-1.5 w-8 bg-white/10 rounded-full"></div>
+                <div class="h-1.5 w-8 bg-white/10 rounded-full"></div>
+                <div class="h-1.5 w-8 bg-white/10 rounded-full"></div>
+              </div>
+            </div>
+            <div class="text-center mb-3">
+              <div class="h-2.5 w-28 bg-white/10 rounded-full mx-auto mb-2"></div>
+              <div class="h-1.5 w-36 bg-white/5 rounded-full mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="h-12 rounded-lg bg-white/5 border border-white/5"></div>
+              <div class="h-12 rounded-lg bg-[#60a5fa]/5 border border-[#60a5fa]/10"></div>
+              <div class="h-12 rounded-lg bg-white/5 border border-white/5"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Info -->
+        <div class="flex items-center gap-2 mt-1">
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#60a5fa]/15 text-[#60a5fa] border border-[#60a5fa]/20" data-i18n="projBadge2">Redesign</span>
+        </div>
+        <h3 class="text-white text-lg font-bold" data-i18n="projTitle2">Salon du Cheval</h3>
+        <p class="text-[#a1a1aa] text-xs leading-relaxed" data-i18n="projDetailDesc2">Complete redesign of the Salon du Cheval website. Built a modern, responsive interface with an integrated booking system and real-time event management features.</p>
+        <div class="mt-1">
+          <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-2" data-i18n="projFeatLabel">Key Features</p>
+          <ul class="text-[#a1a1aa] text-xs leading-relaxed flex flex-col gap-1.5">
+            <li class="flex items-start gap-2"><span class="text-[#60a5fa] mt-0.5">&#9670;</span><span data-i18n="projFeat2a">Responsive modern design</span></li>
+            <li class="flex items-start gap-2"><span class="text-[#60a5fa] mt-0.5">&#9670;</span><span data-i18n="projFeat2b">Online booking system</span></li>
+            <li class="flex items-start gap-2"><span class="text-[#60a5fa] mt-0.5">&#9670;</span><span data-i18n="projFeat2c">Event schedule management</span></li>
+          </ul>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mt-2">
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#60a5fa]/10 text-[#60a5fa]/80 border border-[#60a5fa]/15">Next.js</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#60a5fa]/10 text-[#60a5fa]/80 border border-[#60a5fa]/15">TypeScript</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#60a5fa]/10 text-[#60a5fa]/80 border border-[#60a5fa]/15">Tailwind</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#60a5fa]/10 text-[#60a5fa]/80 border border-[#60a5fa]/15">Prisma</span>
+        </div>
+      </div>
+
+      <!-- Project Detail 3: SMS Dashboard -->
+      <div id="proj-detail-3" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute">
+        <button class="proj-back-btn flex items-center gap-2 text-[#71717a] hover:text-white text-xs mb-2 cursor-pointer transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span data-i18n="menuBack">Back to menu</span>
+        </button>
+        <!-- Large browser mockup with fake dashboard UI -->
+        <div class="rounded-xl border border-white/10 overflow-hidden">
+          <div class="flex items-center gap-2 px-3 py-2 bg-white/5 border-b border-white/10">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]"></div>
+            </div>
+            <div class="flex-1 mx-2">
+              <div class="bg-white/5 rounded-md px-3 py-0.5 text-[10px] text-[#71717a] font-mono text-center">sms-dashboard.dev</div>
+            </div>
+          </div>
+          <div class="p-3" style="background: linear-gradient(135deg, rgba(16,185,129,0.06) 0%, rgba(10,10,10,0.9) 100%); min-height: 120px;">
+            <!-- Fake dashboard UI -->
+            <div class="grid grid-cols-3 gap-2 mb-3">
+              <div class="rounded-lg bg-white/5 border border-white/5 p-2">
+                <div class="h-1 w-6 bg-[#10b981]/30 rounded-full mb-1.5"></div>
+                <div class="h-3 w-8 bg-[#10b981]/20 rounded"></div>
+              </div>
+              <div class="rounded-lg bg-white/5 border border-white/5 p-2">
+                <div class="h-1 w-6 bg-white/10 rounded-full mb-1.5"></div>
+                <div class="h-3 w-10 bg-white/10 rounded"></div>
+              </div>
+              <div class="rounded-lg bg-white/5 border border-white/5 p-2">
+                <div class="h-1 w-6 bg-white/10 rounded-full mb-1.5"></div>
+                <div class="h-3 w-7 bg-white/10 rounded"></div>
+              </div>
+            </div>
+            <div class="rounded-lg bg-white/3 border border-white/5 p-2">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="h-1.5 w-12 bg-white/10 rounded-full"></div>
+                <div class="h-1.5 w-8 bg-white/5 rounded-full ml-auto"></div>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[#10b981]/40"></div><div class="h-1 flex-1 bg-white/5 rounded-full"></div><div class="h-1 w-6 bg-[#10b981]/15 rounded-full"></div></div>
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[#10b981]/40"></div><div class="h-1 flex-1 bg-white/5 rounded-full"></div><div class="h-1 w-6 bg-[#10b981]/15 rounded-full"></div></div>
+                <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-white/10"></div><div class="h-1 flex-1 bg-white/5 rounded-full"></div><div class="h-1 w-6 bg-white/5 rounded-full"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Info -->
+        <div class="flex items-center gap-2 mt-1">
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/20" data-i18n="projBadge3">Full-Stack</span>
+        </div>
+        <h3 class="text-white text-lg font-bold" data-i18n="projTitle3">SMS Dashboard</h3>
+        <p class="text-[#a1a1aa] text-xs leading-relaxed" data-i18n="projDetailDesc3">Full-stack dashboard for managing SMS campaigns. Built with real-time analytics, message tracking, and a clean interface for monitoring delivery rates and engagement.</p>
+        <div class="mt-1">
+          <p class="text-[#60a5fa] font-mono text-[10px] uppercase tracking-widest mb-2" data-i18n="projFeatLabel">Key Features</p>
+          <ul class="text-[#a1a1aa] text-xs leading-relaxed flex flex-col gap-1.5">
+            <li class="flex items-start gap-2"><span class="text-[#10b981] mt-0.5">&#9670;</span><span data-i18n="projFeat3a">Real-time delivery analytics</span></li>
+            <li class="flex items-start gap-2"><span class="text-[#10b981] mt-0.5">&#9670;</span><span data-i18n="projFeat3b">Campaign management system</span></li>
+            <li class="flex items-start gap-2"><span class="text-[#10b981] mt-0.5">&#9670;</span><span data-i18n="projFeat3c">REST API with authentication</span></li>
+          </ul>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mt-2">
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#10b981]/10 text-[#10b981]/80 border border-[#10b981]/15">Node.js</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#10b981]/10 text-[#10b981]/80 border border-[#10b981]/15">React</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#10b981]/10 text-[#10b981]/80 border border-[#10b981]/15">MongoDB</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] bg-[#10b981]/10 text-[#10b981]/80 border border-[#10b981]/15">Socket.io</span>
         </div>
       </div>
 
@@ -395,6 +617,17 @@ import GlobeScene from './Globe/GlobeScene.tsx';
   [dir="rtl"] .section-back-btn svg,
   [dir="rtl"] #exp-back-btn svg {
     transform: scaleX(-1);
+  }
+
+  /* Device mockup */
+  .device-mockup {
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .device-mockup:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   }
 
   /* Glass button */
@@ -607,6 +840,31 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       btn.addEventListener('click', () => {
         stopExpSlideshow();
         showMenu();
+      });
+    });
+
+    // ── Project detail navigation ──
+    document.querySelectorAll('.device-mockup').forEach((mockup, i) => {
+      (mockup as HTMLElement).style.cursor = 'pointer';
+      mockup.addEventListener('click', () => {
+        const projSection = document.getElementById('section-projects');
+        const detail = document.getElementById(`proj-detail-${i + 1}`);
+        if (!projSection || !detail) return;
+        projSection.classList.remove('active');
+        setTimeout(() => {
+          detail.classList.add('active');
+        }, 150);
+      });
+    });
+
+    document.querySelectorAll('.proj-back-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[id^="proj-detail-"]').forEach(d => {
+          (d as HTMLElement).classList.remove('active');
+        });
+        setTimeout(() => {
+          document.getElementById('section-projects')?.classList.add('active');
+        }, 150);
       });
     });
 
