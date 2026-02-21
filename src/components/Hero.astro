@@ -301,7 +301,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
   <div class="w-full max-w-3xl mx-auto px-6 pt-12 pb-24 flex flex-col gap-8">
 
     <!-- Project 1: GenAI Hackathon -->
-    <div class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <a href="https://genaihackaton.pages.dev/" target="_blank" rel="noopener noreferrer" class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden block">
       <div class="h-48 bg-white/[0.03] flex items-center justify-center border-b border-white/5 overflow-hidden">
         <img src="/hackathon.png" alt="GenAI Hackathon" class="w-full h-full object-cover object-top" />
       </div>
@@ -311,14 +311,18 @@ import GlobeScene from './Globe/GlobeScene.tsx';
           <span class="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/25" data-i18n="projBadge1">1st Place</span>
         </div>
         <p class="text-sm leading-relaxed mb-4" style="color: var(--theme-text-muted);" data-i18n="projDesc1">AI-powered application built during a 48h hackathon. Team project combining generative AI with a practical use case.</p>
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-2 mb-4">
           <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Python</span>
           <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">AI / ML</span>
           <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">React</span>
           <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Node.js</span>
         </div>
+        <span class="inline-flex items-center gap-2 text-xs text-[#71717a] hover:text-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          <span data-i18n="projLink1">Visit website</span>
+        </span>
       </div>
-    </div>
+    </a>
 
     <!-- Project 2: Salon du Cheval -->
     <div id="salon-card" class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden cursor-pointer">
