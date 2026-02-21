@@ -482,18 +482,15 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     position: fixed !important;
     z-index: 50;
     pointer-events: none;
-    filter: drop-shadow(0 0 20px rgba(96,165,250,0.4));
     transition: none !important;
+    will-change: transform;
+  }
+
+  #globe-area.exp-timeline-settled {
     overflow: hidden;
     border-radius: 50%;
-    will-change: top, transform, filter;
+    filter: drop-shadow(0 0 20px rgba(96,165,250,0.4));
   }
-
-  #globe-area.exp-timeline-mode > div {
-    width: 80px !important;
-    height: 80px !important;
-  }
-
 
   /* Project overlay */
   .proj-hero-title {
@@ -620,6 +617,12 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       // Hide global back button when entering a section
       backBtn.style.opacity = '0';
       backBtn.style.pointerEvents = 'none';
+
+      // Experience: start globe animation IMMEDIATELY (no delay)
+      if (sectionId === 'experience') {
+        startExpSlideshow();
+      }
+
       setTimeout(() => {
         sectionPanels.forEach(p => {
           const panel = p as HTMLElement;
@@ -629,9 +632,6 @@ import GlobeScene from './Globe/GlobeScene.tsx';
             panel.classList.remove('active');
           }
         });
-        if (sectionId === 'experience') {
-          setTimeout(startExpSlideshow, 300);
-        }
         if (sectionId === 'projects') {
           setTimeout(openProjOverlay, 300);
         }
@@ -914,18 +914,20 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       savedGlobeRect = globeArea.getBoundingClientRect();
       savedGlobeTransform = globeArea.style.transform || '';
 
-      // Show overlay
-      expOverlay.style.opacity = '1';
+      // Fade in overlay (not instant)
+      expOverlay.style.opacity = '0';
       expOverlay.style.pointerEvents = 'auto';
       expOverlay.scrollTop = 0;
 
-      // Globe → fixed at its current explore position
+      // Globe → fixed at its current position, keeping original size, no visual effects yet
       globeArea.classList.add('exp-timeline-mode');
+      globeArea.classList.remove('exp-timeline-settled');
       globeArea.style.left = `${savedGlobeRect.left}px`;
       globeArea.style.top = `${savedGlobeRect.top}px`;
       globeArea.style.width = `${savedGlobeRect.width}px`;
       globeArea.style.height = `${savedGlobeRect.height}px`;
-      globeArea.style.transform = 'none';
+      globeArea.style.transformOrigin = 'center center';
+      globeArea.style.transform = 'scale(1)';
 
       gsapDone = false;
       springVelocity = 0;
@@ -936,28 +938,49 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       backBtn.style.opacity = '0';
       backBtn.style.pointerEvents = 'none';
 
-      // Wait for overlay layout
-      await new Promise(r => setTimeout(r, 100));
+      // Wait 2 frames for layout to settle
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
       expOverlay.scrollTop = 0;
 
       // Read first anchor position
       const gsap = (await import('gsap')).default;
       const rect = expAnchors[0]?.getBoundingClientRect();
       const anchorY = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
-      const targetX = window.innerWidth / 2 - 40;
-      const targetY = anchorY - 40;
+      const targetScale = 80 / savedGlobeRect.width;
 
-      // Smooth animation from explore position to first orange dot
+      // Calculate movement delta (pure transform, GPU only)
+      const startCenterX = savedGlobeRect.left + savedGlobeRect.width / 2;
+      const startCenterY = savedGlobeRect.top + savedGlobeRect.height / 2;
+      const deltaX = (window.innerWidth / 2) - startCenterX;
+      const deltaY = anchorY - startCenterY;
+
+      // Fade in overlay smoothly
+      gsap.to(expOverlay, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+
+      // Globe: smooth GPU animation (transform only, no layout)
       activeTween = gsap.to(globeArea, {
-        left: targetX,
-        top: targetY,
-        width: 80,
-        height: 80,
-        duration: 0.9,
-        ease: 'power2.out',
+        x: deltaX,
+        y: deltaY,
+        scale: targetScale,
+        duration: 1.4,
+        ease: 'power2.inOut',
         onComplete: () => {
-          globeCurrentY = targetY + 40;
-          globeTargetY = targetY + 40;
+          // Now apply real dimensions + visual effects
+          const innerDiv = globeArea.querySelector(':scope > div') as HTMLElement;
+          globeArea.style.width = '80px';
+          globeArea.style.height = '80px';
+          globeArea.style.left = `${window.innerWidth / 2 - 40}px`;
+          globeArea.style.top = `${anchorY - 40}px`;
+          globeArea.style.transform = 'none';
+          globeArea.style.transformOrigin = '';
+          if (innerDiv) {
+            innerDiv.style.width = '80px';
+            innerDiv.style.height = '80px';
+          }
+          gsap.set(globeArea, { clearProps: 'x,y,scale' });
+          globeArea.classList.add('exp-timeline-settled');
+          globeCurrentY = anchorY;
+          globeTargetY = anchorY;
           springVelocity = 0;
           gsapDone = true;
         }
@@ -974,7 +997,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       if (!globeArea) return;
       // Kill GSAP tween synchronously to prevent it from re-applying stale styles
       if (activeTween) { activeTween.kill(); activeTween = null; }
-      globeArea.classList.remove('exp-timeline-mode');
+      globeArea.classList.remove('exp-timeline-mode', 'exp-timeline-settled');
       globeArea.style.left = '';
       globeArea.style.top = '';
       globeArea.style.width = '';
@@ -982,7 +1005,14 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       globeArea.style.filter = '';
       globeArea.style.opacity = '';
       globeArea.style.scale = '';
+      globeArea.style.transformOrigin = '';
       globeArea.style.transform = savedGlobeTransform;
+      // Reset inner div size
+      const innerDiv = globeArea.querySelector(':scope > div') as HTMLElement;
+      if (innerDiv) {
+        innerDiv.style.width = '';
+        innerDiv.style.height = '';
+      }
     }
 
     async function closeExpOverlay() {
