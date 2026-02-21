@@ -553,6 +553,9 @@ import GlobeScene from './Globe/GlobeScene.tsx';
         restoreGlobe();
       }
       exploreMenu.classList.add('fade-out');
+      // Hide global back button when entering a section
+      backBtn.style.opacity = '0';
+      backBtn.style.pointerEvents = 'none';
       setTimeout(() => {
         sectionPanels.forEach(p => {
           const panel = p as HTMLElement;
@@ -574,6 +577,9 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       sectionPanels.forEach(p => {
         (p as HTMLElement).classList.remove('active');
       });
+      // Show global back button when returning to menu
+      backBtn.style.opacity = '1';
+      backBtn.style.pointerEvents = 'auto';
       setTimeout(() => {
         exploreMenu.classList.remove('fade-out');
       }, 150);
