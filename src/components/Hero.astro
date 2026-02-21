@@ -618,11 +618,9 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       backBtn.style.opacity = '0';
       backBtn.style.pointerEvents = 'none';
 
-      // Start animations IMMEDIATELY (no delay)
+      // Experience: start globe animation IMMEDIATELY (no delay)
       if (sectionId === 'experience') {
         startExpSlideshow();
-      } else if (sectionId === 'projects') {
-        openProjOverlay();
       }
 
       setTimeout(() => {
@@ -634,6 +632,9 @@ import GlobeScene from './Globe/GlobeScene.tsx';
             panel.classList.remove('active');
           }
         });
+        if (sectionId === 'projects') {
+          setTimeout(openProjOverlay, 300);
+        }
       }, 150);
     }
 
@@ -681,60 +682,27 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     const projOverlay = document.getElementById('proj-overlay');
     const projBackBtn = document.getElementById('proj-back-btn');
 
-    async function openProjOverlay() {
+    function openProjOverlay() {
       if (!projOverlay || !globeArea) return;
-      const gsap = (await import('gsap')).default;
-
-      savedGlobeTransform = globeArea.style.transform || '';
-      projOverlay.style.opacity = '0';
+      projOverlay.style.opacity = '1';
       projOverlay.style.pointerEvents = 'auto';
       projOverlay.scrollTop = 0;
-
+      // Hide globe
+      globeArea.style.opacity = '0';
+      globeArea.style.pointerEvents = 'none';
       // Hide global back button (overlay has its own)
       backBtn.style.opacity = '0';
       backBtn.style.pointerEvents = 'none';
-
-      // Globe shrinks + fades out
-      gsap.to(globeArea, {
-        scale: 0.3,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          globeArea.style.pointerEvents = 'none';
-        }
-      });
-
-      // Overlay fades in
-      gsap.to(projOverlay, { opacity: 1, duration: 0.6, ease: 'power2.out' });
-
-      // Stagger project cards
-      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-      const cards = projOverlay.querySelectorAll('.proj-card');
-      const title = projOverlay.querySelector('.proj-hero-title');
-      if (title) {
-        gsap.fromTo(title, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'power2.out' });
-      }
-      cards.forEach((card, i) => {
-        gsap.fromTo(card as HTMLElement,
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.6, delay: 0.3 + i * 0.12, ease: 'power2.out' }
-        );
-      });
     }
 
-    async function closeProjOverlay() {
+    function closeProjOverlay() {
       if (!projOverlay) return;
-      const gsap = (await import('gsap')).default;
       projOverlay.style.opacity = '0';
       projOverlay.style.pointerEvents = 'none';
       // Restore globe
       if (globeArea) {
-        gsap.killTweensOf(globeArea);
-        gsap.set(globeArea, { clearProps: 'scale,opacity' });
         globeArea.style.opacity = '1';
         globeArea.style.pointerEvents = '';
-        globeArea.style.transform = savedGlobeTransform || '';
       }
     }
 
