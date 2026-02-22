@@ -83,14 +83,21 @@
   </div>
 </section>
 
-<script>
-  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = (document.getElementById('contact-name') as HTMLInputElement).value;
-    const email = (document.getElementById('contact-email') as HTMLInputElement).value;
-    const message = (document.getElementById('contact-message') as HTMLTextAreaElement).value;
-    const subject = encodeURIComponent(`Portfolio Contact — ${name}`);
-    const body = encodeURIComponent(`From: ${name} (${email})\n\n${message}`);
-    window.location.href = `mailto:nawfal.hassani@epitech.eu?subject=${subject}&body=${body}`;
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('contact-name').value;
+        var email = document.getElementById('contact-email').value;
+        var message = document.getElementById('contact-message').value;
+        var subject = encodeURIComponent('Portfolio Contact — ' + name);
+        var body = encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message);
+        var link = document.createElement('a');
+        link.href = 'mailto:nawfal.hassani@epitech.eu?subject=' + subject + '&body=' + body;
+        link.click();
+      });
+    }
   });
 </script>
