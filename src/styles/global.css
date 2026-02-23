@@ -173,6 +173,52 @@ body {
   border-color: rgba(0,0,0,0.08) !important;
 }
 
+/* ── Internship badge pulse ── */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.4);
+  }
+}
+
+.internship-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.08);
+  color: #34d399;
+  backdrop-filter: blur(12px);
+  letter-spacing: 0.02em;
+}
+
+.internship-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #34d399;
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .internship-badge {
+  border-color: rgba(5, 150, 105, 0.3) !important;
+  background: rgba(5, 150, 105, 0.08) !important;
+  color: #059669 !important;
+}
+
+[data-theme="light"] .internship-badge .pulse-dot {
+  background-color: #059669 !important;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

@@ -789,12 +789,12 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       heroText.style.transform = isMobile() ? 'translateY(40px)' : `translateX(${rtl ? '60px' : '-60px'})`;
       heroText.style.pointerEvents = 'none';
 
-      // Animate globe: move + up + scale (inverse direction for RTL)
+      // Animate globe: move + scale (inverse direction for RTL)
       if (isMobile()) {
-        globeArea.style.transform = 'translateY(-30px) scale(1.15)';
+        globeArea.style.transform = 'scale(1.15)';
       } else {
         const shiftX = rtl ? (gridWidth / 2) : -(gridWidth / 2);
-        globeArea.style.transform = `translateX(${shiftX}px) translateY(-60px) scale(1.1)`;
+        globeArea.style.transform = `translateX(${shiftX}px) scale(1.1)`;
       }
 
       // Hide explore button
