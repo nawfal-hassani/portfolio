@@ -1080,14 +1080,11 @@ import GlobeScene from './Globe/GlobeScene.tsx';
     // Smooth globe tracking with spring physics + rAF
     let globeCurrentY = 0;
     let globeTargetY = 0;
-    let globeSmoothTarget = 0;
     let rafId: number | null = null;
     let gsapDone = false;
     let springVelocity = 0;
-    let currentScale = 1;
-    const SPRING_STIFFNESS = 0.032;
-    const SPRING_DAMPING = 0.90;
-    const TARGET_SMOOTHING = 0.06;
+    const SPRING_STIFFNESS = 0.045;
+    const SPRING_DAMPING = 0.86;
 
     function getGlobeTargetY() {
       if (!expOverlay || expAnchors.length === 0) return window.innerHeight / 2;
@@ -1112,19 +1109,15 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
       globeTargetY = getGlobeTargetY();
 
-      // Smooth the target itself so rapid anchor changes during swipe don't jerk the spring
-      globeSmoothTarget += (globeTargetY - globeSmoothTarget) * TARGET_SMOOTHING;
-
-      // Spring physics: force + damping (tracks the smoothed target)
-      const displacement = globeSmoothTarget - globeCurrentY;
+      // Spring physics: force + damping
+      const displacement = globeTargetY - globeCurrentY;
       const springForce = displacement * SPRING_STIFFNESS;
       springVelocity = (springVelocity + springForce) * SPRING_DAMPING;
       globeCurrentY += springVelocity;
 
-      // Subtle scale: gentle stretch when moving — eased toward 1 when settling
+      // Subtle scale: gentle stretch when moving
       const speed = Math.abs(springVelocity);
-      const targetScale = 1 + Math.min(speed * 0.0015, 0.025);
-      currentScale += (targetScale - currentScale) * 0.07;
+      const scale = 1 + Math.min(speed * 0.003, 0.06);
       // Subtle glow: soft intensify with speed
       const glowBase = 20;
       const glowExtra = Math.min(speed * 0.8, 15);
@@ -1133,22 +1126,17 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       const centerX = window.innerWidth / 2;
       globeArea.style.left = `${centerX - 40}px`;
       globeArea.style.top = `${globeCurrentY - 40}px`;
-      globeArea.style.transform = `scale(${currentScale.toFixed(4)})`;
+      globeArea.style.transform = `scale(${scale.toFixed(3)})`;
       globeArea.style.filter = `drop-shadow(0 0 ${glowBase + glowExtra}px rgba(96,165,250,${glowAlpha}))`;
 
       updateExpHighlight();
 
-      // Keep animating until fully settled (also wait for scale to return to 1)
-      const targetSettled = Math.abs(globeTargetY - globeSmoothTarget) < 0.1;
-      const springSettled = Math.abs(springVelocity) < 0.05 && Math.abs(displacement) < 0.2;
-      const scaleSettled = Math.abs(currentScale - 1) < 0.001;
-
-      if (!targetSettled || !springSettled || !scaleSettled) {
+      // Keep animating until settled
+      if (Math.abs(springVelocity) > 0.2 || Math.abs(displacement) > 0.5) {
         rafId = requestAnimationFrame(animateGlobe);
       } else {
         springVelocity = 0;
-        currentScale = 1;
-        globeArea.style.transform = 'scale(1)';
+        globeArea.style.transform = 'none';
         globeArea.style.filter = 'drop-shadow(0 0 20px rgba(96,165,250,0.4))';
         rafId = null;
       }
@@ -1332,9 +1320,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
           globeArea.classList.add('exp-timeline-settled');
           globeCurrentY = anchorY;
           globeTargetY = anchorY;
-          globeSmoothTarget = anchorY;
           springVelocity = 0;
-          currentScale = 1;
           gsapDone = true;
         }
       });
