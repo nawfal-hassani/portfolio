@@ -146,6 +146,12 @@ import GlobeScene from './Globe/GlobeScene.tsx';
         </div>
       </div>
 
+      <!-- Section: Projects — hidden, opens overlay -->
+      <div id="section-projects" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute" style="display:none;"></div>
+
+      <!-- Section: Experience — hidden here, actual content is in #exp-overlay -->
+      <div id="section-experience" class="section-panel w-full max-w-md px-4 flex flex-col gap-3 absolute" style="display:none;"></div>
+
     </div>
 
   </div>
@@ -835,7 +841,8 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       if (!isExploring) return;
       isExploring = false;
 
-      closeExpOverlay();
+      // Stop experience slideshow if running
+      stopExpSlideshow();
       closeProjOverlay();
 
       exploreContent.style.opacity = '0';
@@ -868,7 +875,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     function showSection(sectionId: string) {
       if (!exploreMenu) return;
-      closeExpOverlay();
+      stopExpSlideshow();
       // Safety: ensure globe is restored if it was in timeline mode
       if (globeArea && globeArea.classList.contains('exp-timeline-mode')) {
         restoreGlobe();
@@ -880,7 +887,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
       // Experience: start globe animation IMMEDIATELY (no delay)
       if (sectionId === 'experience') {
-        openExpOverlay();
+        startExpSlideshow();
       }
 
       setTimeout(() => {
@@ -900,7 +907,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     function showMenu() {
       if (!exploreMenu) return;
-      closeExpOverlay();
+      stopExpSlideshow();
       closeProjOverlay();
       sectionPanels.forEach(p => {
         (p as HTMLElement).classList.remove('active');
@@ -933,7 +940,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
     document.querySelectorAll('.section-back-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        closeExpOverlay();
+        stopExpSlideshow();
         showMenu();
       });
     });
@@ -1404,6 +1411,9 @@ import GlobeScene from './Globe/GlobeScene.tsx';
         showMenu();
       });
     }
+
+    function startExpSlideshow() { openExpOverlay(); }
+    function stopExpSlideshow() { closeExpOverlay(); }
 
     // Discord copy username
     const discordBtn = document.getElementById('discord-btn');
