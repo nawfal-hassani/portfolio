@@ -95,6 +95,10 @@ import '../styles/global.css';
       projBadge5: 'NFC Solution',
       projDesc5: 'NFC solution allowing merchants to collect Google reviews effortlessly. Features a 3D interactive card, Stripe checkout, and a premium landing page.',
       projLink5: 'Visit website',
+      projTitle6: 'Engine',
+      projBadge6: 'SaaS B2B',
+      projDesc6: 'B2B prospecting SaaS. Search and filter prospects by niche and geographic area, organize campaigns and export — powered by Google Places.',
+      projLink6: 'Visit website',
       salonBack: 'Back to projects',
       salonVisitors: '70,000+ visitors/year',
       salonIntro: '1-week Project Week organized by the IONIS Group, bringing together students from Epitech, EartSup, and a marketing school. Our team of 3 designers + 3 developers proposed a complete redesign to VEL, organizer of the Salon du Cheval de Paris — one of the largest equestrian events in Europe with over 70,000 visitors each year. Our work covered a new visual identity, a redesigned website, a mobile app for visitor circulation, and a full merchandise line.',
@@ -196,6 +200,10 @@ import '../styles/global.css';
       projBadge5: 'Solution NFC',
       projDesc5: 'Solution NFC permettant aux commerçants de collecter des avis Google sans effort. Carte 3D interactive, paiement Stripe et landing page premium.',
       projLink5: 'Voir le site',
+      projTitle6: 'Engine',
+      projBadge6: 'SaaS B2B',
+      projDesc6: 'SaaS de prospection B2B. Recherchez et filtrez vos prospects par niche et zone géographique, organisez vos campagnes et exportez — propulsé par Google Places.',
+      projLink6: 'Voir le site',
       salonBack: 'Retour aux projets',
       salonVisitors: '70 000+ visiteurs/an',
       salonIntro: 'Project Week d\'une semaine organisée par le groupe IONIS, réunissant des étudiants d\'Epitech, EartSup et une école de marketing. Notre équipe de 3 designers + 3 développeurs a proposé une refonte complète à VEL, organisateur du Salon du Cheval de Paris — l\'un des plus grands événements équestres d\'Europe avec plus de 70 000 visiteurs chaque année. Notre travail couvrait une nouvelle identité visuelle, un site web redesigné, une application mobile pour la circulation des visiteurs, et une collection complète de merchandising.',
@@ -297,6 +305,10 @@ import '../styles/global.css';
       projBadge5: 'NFC 解决方案',
       projDesc5: 'NFC解决方案，让商家轻松收集Google评价。3D互动卡片、Stripe支付和高端着陆页。',
       projLink5: '访问网站',
+      projTitle6: 'Engine',
+      projBadge6: 'B2B SaaS',
+      projDesc6: 'B2B 智能勘探 SaaS 平台。按行业和地理区域搜索和筛选潜在客户，组织营销活动并导出 — 基于 Google Places。',
+      projLink6: '访问网站',
       salonBack: '返回项目',
       salonVisitors: '每年70,000+参观者',
       salonIntro: '由IONIS集团组织的为期一周的Project Week，汇集了Epitech、EartSup和市场营销学院的学生。我们的3名设计师 + 3名开发者团队向VEL（巴黎马展组织方）提交了完整的重构方案——这是欧洲最大的马术盛会之一，每年吸引超过70,000名参观者。我们的工作涵盖了全新的视觉识别、网站重构、用于访客导流的移动应用，以及完整的周边产品系列。',
@@ -398,6 +410,10 @@ import '../styles/global.css';
       projBadge5: 'حل NFC',
       projDesc5: 'حل NFC يتيح للتجار جمع تقييمات Google بسهولة. بطاقة ثلاثية الأبعاد تفاعلية، دفع عبر Stripe وصفحة هبوط احترافية.',
       projLink5: 'زيارة الموقع',
+      projTitle6: 'Engine',
+      projBadge6: 'SaaS B2B',
+      projDesc6: 'منصة SaaS لاستكشاف العملاء B2B. ابحث وفلتر العملاء المحتملين حسب القطاع والمنطقة الجغرافية، نظّم الحملات وصدّر النتائج — مدعوم بـ Google Places.',
+      projLink6: 'زيارة الموقع',
       salonBack: 'العودة إلى المشاريع',
       salonVisitors: '+70,000 زائر/سنة',
       salonIntro: 'أسبوع مشروع نظمته مجموعة IONIS، جمع طلاب من Epitech وEartSup وكلية تسويق. فريقنا المكون من 3 مصممين + 3 مطورين قدم مقترح إعادة تصميم شاملة لـ VEL، منظم صالون الخيول بباريس — أحد أكبر الفعاليات الفروسية في أوروبا بأكثر من 70,000 زائر سنوياً. شمل عملنا هوية بصرية جديدة، وموقع إلكتروني مُعاد تصميمه، وتطبيق جوال لتنظيم حركة الزوار، ومجموعة كاملة من المنتجات الترويجية.',
@@ -431,6 +447,13 @@ import '../styles/global.css';
 
   const rtlLangs = ['ar'];
 
+  const cvByLang: Record<string, string> = {
+    fr: '/cv-nawfal-hassani-v2.pdf',
+    en: '/cv-nawfal-hassani-en.pdf',
+    zh: '/cv-nawfal-hassani-zh.pdf',
+    ar: '/cv-nawfal-hassani-ar.pdf',
+  };
+
   function setLang(lang: string) {
     const t = translations[lang];
     if (!t) return;
@@ -451,6 +474,12 @@ import '../styles/global.css';
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
+
+    // Update CV download link to match the active language
+    const cvLink = document.getElementById('cv-download') as HTMLAnchorElement | null;
+    if (cvLink && cvByLang[lang]) {
+      cvLink.href = cvByLang[lang];
+    }
 
     // Save preference
     localStorage.setItem('lang', lang);

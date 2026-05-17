@@ -81,7 +81,7 @@ import GlobeScene from './Globe/GlobeScene.tsx';
         </button>
 
         <!-- CV Download -->
-        <a href="/cv-nawfal-hassani.pdf" download class="glass-btn group rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-4 flex items-center gap-4 text-left cursor-pointer relative overflow-hidden">
+        <a href="/cv-nawfal-hassani-v2.pdf" download id="cv-download" class="glass-btn group rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl p-4 flex items-center gap-4 text-left cursor-pointer relative overflow-hidden">
           <div class="w-11 h-11 rounded-xl bg-[#34d399]/10 border border-[#34d399]/20 flex items-center justify-center shrink-0 group-hover:bg-[#34d399]/20 transition-colors">
             <svg class="w-5 h-5 text-[#34d399]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
           </div>
@@ -138,6 +138,10 @@ import GlobeScene from './Globe/GlobeScene.tsx';
             <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Node.js</span>
             <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Python</span>
             <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">C</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Bash</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Docker</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">WordPress</span>
+            <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Shopify</span>
           </div>
         </div>
         <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 mt-3">
@@ -408,6 +412,31 @@ import GlobeScene from './Globe/GlobeScene.tsx';
         <span class="inline-flex items-center gap-2 text-xs text-[#71717a] hover:text-white transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
           <span data-i18n="projLink5">Visit website</span>
+        </span>
+      </div>
+    </a>
+
+    <!-- Project 6: Engine -->
+    <a href="https://e-gine.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-card rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden block">
+      <div class="h-48 bg-white/[0.03] flex items-center justify-center border-b border-white/5 overflow-hidden">
+        <img src="/engine.png" alt="Engine" class="w-full h-full object-cover object-top" />
+      </div>
+      <div class="p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <h3 class="text-lg font-semibold" style="color: var(--theme-text);" data-i18n="projTitle6">Engine</h3>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#f97316]/15 text-[#f97316] border border-[#f97316]/25" data-i18n="projBadge6">SaaS B2B</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-4" style="color: var(--theme-text-muted);" data-i18n="projDesc6">B2B prospecting SaaS. Search and filter prospects by niche and geographic area, organize campaigns and export — powered by Google Places.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Next.js</span>
+          <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">TypeScript</span>
+          <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Tailwind CSS</span>
+          <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">PostgreSQL</span>
+          <span class="px-3 py-1 rounded-full text-xs bg-[#60a5fa]/10 text-[#60a5fa] border border-[#60a5fa]/20">Stripe</span>
+        </div>
+        <span class="inline-flex items-center gap-2 text-xs text-[#71717a] hover:text-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          <span data-i18n="projLink6">Visit website</span>
         </span>
       </div>
     </a>
