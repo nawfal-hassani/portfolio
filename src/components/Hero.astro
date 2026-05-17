@@ -1131,29 +1131,23 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       });
     }
 
-    // Smooth globe tracking with spring physics + rAF
+    // Globe tracking: snap target to nearest dot, lerp to it (no oscillation)
     let globeCurrentY = 0;
     let globeTargetY = 0;
     let rafId: number | null = null;
     let gsapDone = false;
-    let springVelocity = 0;
-    const SPRING_STIFFNESS = 0.045;
-    const SPRING_DAMPING = 0.86;
+    const LERP = 0.18;
 
     function getGlobeTargetY() {
       if (!expOverlay || expAnchors.length === 0) return window.innerHeight / 2;
       const viewCenterY = window.innerHeight / 2;
-      // Find the CLOSEST anchor to viewport center
       let closestY = viewCenterY;
       let closestDist = Infinity;
       expAnchors.forEach((anchor: HTMLElement) => {
         const r = anchor.getBoundingClientRect();
         const y = r.top + r.height / 2;
         const dist = Math.abs(y - viewCenterY);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closestY = y;
-        }
+        if (dist < closestDist) { closestDist = dist; closestY = y; }
       });
       return closestY;
     }
@@ -1162,17 +1156,12 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       if (!expActive || !globeArea || !gsapDone) { rafId = null; return; }
 
       globeTargetY = getGlobeTargetY();
-
-      // Spring physics: force + damping
       const displacement = globeTargetY - globeCurrentY;
-      const springForce = displacement * SPRING_STIFFNESS;
-      springVelocity = (springVelocity + springForce) * SPRING_DAMPING;
-      globeCurrentY += springVelocity;
+      const step = displacement * LERP;
+      globeCurrentY += step;
 
-      // Subtle scale: gentle stretch when moving
-      const speed = Math.abs(springVelocity);
+      const speed = Math.abs(step);
       const scale = 1 + Math.min(speed * 0.003, 0.06);
-      // Subtle glow: soft intensify with speed
       const glowBase = 20;
       const glowExtra = Math.min(speed * 0.8, 15);
       const glowAlpha = (0.4 + Math.min(speed * 0.008, 0.15)).toFixed(2);
@@ -1185,11 +1174,12 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
       updateExpHighlight();
 
-      // Keep animating until settled
-      if (Math.abs(springVelocity) > 0.2 || Math.abs(displacement) > 0.5) {
+      // Pure lerp: no overshoot. Snap when within sub-pixel range.
+      if (Math.abs(displacement) > 0.5) {
         rafId = requestAnimationFrame(animateGlobe);
       } else {
-        springVelocity = 0;
+        globeCurrentY = globeTargetY;
+        globeArea.style.top = `${globeCurrentY - 40}px`;
         globeArea.style.transform = 'none';
         globeArea.style.filter = 'drop-shadow(0 0 20px rgba(96,165,250,0.4))';
         rafId = null;
@@ -1323,7 +1313,6 @@ import GlobeScene from './Globe/GlobeScene.tsx';
       globeArea.style.transform = 'scale(1)';
 
       gsapDone = false;
-      springVelocity = 0;
       launchTriggered = false;
       if (launchTimer) { clearTimeout(launchTimer); launchTimer = null; }
 
@@ -1374,7 +1363,6 @@ import GlobeScene from './Globe/GlobeScene.tsx';
           globeArea.classList.add('exp-timeline-settled');
           globeCurrentY = anchorY;
           globeTargetY = anchorY;
-          springVelocity = 0;
           gsapDone = true;
         }
       });
@@ -1417,7 +1405,6 @@ import GlobeScene from './Globe/GlobeScene.tsx';
 
       // Clean up rAF, scroll listener, timer, and reset flags
       gsapDone = false;
-      springVelocity = 0;
       if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
       if (scrollHandler) { expOverlay.removeEventListener('scroll', scrollHandler); scrollHandler = null; }
       if (launchTimer) { clearTimeout(launchTimer); launchTimer = null; }
