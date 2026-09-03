@@ -57,7 +57,7 @@
           <section>
             <h2>Profile</h2>
             <p class="profile-text">
-              2<sup>nd</sup> year student at <strong>Epitech Montpellier</strong>,
+              3<sup>rd</sup> year student at <strong>Epitech Montpellier</strong>,
               building full-stack web products. Creator of
               <strong>SNCard</strong> (NFC, live on sncard.fr) and <strong>E-gine</strong>
               (B2B prospecting). Former 4-month dev intern at <strong>JDC Occitanie</strong>.
@@ -70,7 +70,7 @@
             <div class="entry">
               <h3>Grande École Programme</h3>
               <p class="sub">Epitech · Montpellier</p>
-              <p class="date">2024 – 2029 · in progress (Tek2)</p>
+              <p class="date">2024 – 2029 · in progress (Tek3)</p>
             </div>
             <div class="entry">
               <h3>STI2D High School Diploma</h3>
@@ -232,7 +232,7 @@
                 <h3>E-gine</h3>
                 <span class="badge">SaaS B2B</span>
               </div>
-              <p class="sub">Next.js 16 · React 19 · TypeScript · PostgreSQL · Prisma · NextAuth · Stripe · Tailwind</p>
+              <p class="sub">Next.js 16 · React 19 · TypeScript · PostgreSQL · Prisma · Stripe · Tailwind</p>
               <p>
                 B2B prospecting platform: search businesses by niche and
                 geographic area via the Google Places API, advanced filters
@@ -251,9 +251,8 @@
               <p class="sub">Python · PyTorch · Gymnasium · NumPy</p>
               <p>
                 <strong>Deep Q-Learning</strong> agent trained to autonomously
-                land a lunar module (Gymnasium LunarLander-v3). MLP Q-network,
-                replay buffer, ε-greedy exploration, target networks,
-                multi-seed benchmarks with 95% CI.
+                land a lunar module (Gymnasium LunarLander). Full from-scratch
+                implementation with reproducible benchmarks.
               </p>
             </article>
 
@@ -421,6 +420,7 @@
         border-right: 1px solid var(--accent);
         display: flex;
         flex-direction: column;
+        min-height: 235mm;
       }
 
       section h2 {
@@ -429,16 +429,16 @@
         text-transform: uppercase;
         letter-spacing: 0.12em;
         color: var(--accent);
-        margin: 0 0 5px;
-        padding-bottom: 3px;
+        margin: 0 0 2px;
+        padding-bottom: 2px;
         border-bottom: 1px solid var(--rule);
       }
       section.main > section > h2 {
         font-size: 11pt;
         border-bottom: 2px solid var(--accent);
         padding-bottom: 5px;
-        margin-top: 7mm;
-        margin-bottom: 4mm;
+        margin-top: 6mm;
+        margin-bottom: 3.5mm;
         letter-spacing: 0.14em;
       }
       section.main > section:first-child > h2 {
@@ -447,7 +447,7 @@
 
       .side > section,
       .main > section {
-        margin-bottom: 1.5mm;
+        margin-bottom: 2.2mm;
       }
       .side > section:last-child,
       .main > section:last-child {
@@ -462,7 +462,7 @@
       }
 
       .entry {
-        margin-bottom: 2.5mm;
+        margin-bottom: 1.5mm;
       }
       .entry:last-child { margin-bottom: 0; }
       .entry h3 {
@@ -532,8 +532,8 @@
         justify-content: center;
         align-items: center;
         padding: 0;
-        margin-top: 5mm;
-        margin-bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
         border: none;
         background: transparent;
         text-decoration: none;
@@ -548,7 +548,7 @@
       }
 
       .job, .proj {
-        margin-bottom: 2mm;
+        margin-bottom: 1.8mm;
       }
       .job:last-child, .proj:last-child {
         margin-bottom: 0;
@@ -600,7 +600,7 @@
       }
       .job .sub, .proj .sub {
         font-size: 8.4pt;
-        color: var(--accent);
+        color: var(--ink-mute);
         margin: 1px 0 3px;
         font-weight: 500;
       }
@@ -637,7 +637,7 @@
           height: 290mm;
           margin: 0 !important;
           box-shadow: none;
-          padding: 6mm 12mm 4mm;
+          padding: 6mm 12mm 10mm;
           page-break-after: avoid;
           overflow: hidden;
         }

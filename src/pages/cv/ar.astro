@@ -57,7 +57,7 @@
           <section>
             <h2>نبذة شخصية</h2>
             <p class="profile-text">
-              طالب في السنة الثانية في <strong>Epitech Montpellier</strong>،
+              طالب في السنة الثالثة في <strong>Epitech Montpellier</strong>،
               أقوم ببناء منتجات ويب full-stack. مؤسس
               <strong>SNCard</strong> (NFC، في الإنتاج على sncard.fr) و
               <strong>E-gine</strong> (تنقيب B2B). متدرب مطور سابق لمدة
@@ -71,7 +71,7 @@
             <div class="entry">
               <h3>برنامج Grande École</h3>
               <p class="sub">Epitech · مونبلييه</p>
-              <p class="date">2024 – 2029 · جارٍ (Tek2)</p>
+              <p class="date">2024 – 2029 · جارٍ (Tek3)</p>
             </div>
             <div class="entry">
               <h3>شهادة البكالوريا STI2D</h3>
@@ -235,7 +235,7 @@
                 <h3>E-gine</h3>
                 <span class="badge">SaaS B2B</span>
               </div>
-              <p class="sub">Next.js 16 · React 19 · TypeScript · PostgreSQL · Prisma · NextAuth · Stripe · Tailwind</p>
+              <p class="sub">Next.js 16 · React 19 · TypeScript · PostgreSQL · Prisma · Stripe · Tailwind</p>
               <p>
                 منصة تنقيب B2B: البحث عن الشركات حسب القطاع والمنطقة
                 الجغرافية عبر Google Places API، فلاتر متقدمة (التقييم،
@@ -253,9 +253,8 @@
               <p class="sub">Python · PyTorch · Gymnasium · NumPy</p>
               <p>
                 وكيل <strong>Deep Q-Learning</strong> مدرَّب على إنزال
-                وحدة قمرية ذاتياً (Gymnasium LunarLander-v3). شبكة Q
-                من نوع MLP، ذاكرة إعادة، استكشاف ε-جشِع، شبكات هدف،
-                قياس أداء بعدة بذور عشوائية (فاصل ثقة 95%).
+                وحدة قمرية ذاتياً (Gymnasium LunarLander). تنفيذ كامل
+                من الصفر مع قياسات أداء قابلة للتكرار.
               </p>
             </article>
 
@@ -424,6 +423,7 @@
         border-inline-end: 1px solid var(--accent);
         display: flex;
         flex-direction: column;
+        min-height: 235mm;
       }
 
       section h2 {
@@ -431,16 +431,16 @@
         font-weight: 700;
         letter-spacing: 0.05em;
         color: var(--accent);
-        margin: 0 0 5px;
-        padding-bottom: 3px;
+        margin: 0 0 2px;
+        padding-bottom: 2px;
         border-bottom: 1px solid var(--rule);
       }
       section.main > section > h2 {
         font-size: 11pt;
         border-bottom: 2px solid var(--accent);
         padding-bottom: 5px;
-        margin-top: 7mm;
-        margin-bottom: 4mm;
+        margin-top: 6mm;
+        margin-bottom: 3.5mm;
       }
       section.main > section:first-child > h2 {
         margin-top: 0;
@@ -448,7 +448,7 @@
 
       .side > section,
       .main > section {
-        margin-bottom: 1.5mm;
+        margin-bottom: 2.2mm;
       }
       .side > section:last-child,
       .main > section:last-child {
@@ -463,7 +463,7 @@
       }
 
       .entry {
-        margin-bottom: 2.5mm;
+        margin-bottom: 1.5mm;
       }
       .entry:last-child { margin-bottom: 0; }
       .entry h3 {
@@ -533,8 +533,8 @@
         justify-content: center;
         align-items: center;
         padding: 0;
-        margin-top: 3mm;
-        margin-bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
         border: none;
         background: transparent;
         text-decoration: none;
@@ -549,7 +549,7 @@
       }
 
       .job, .proj {
-        margin-bottom: 2mm;
+        margin-bottom: 1.8mm;
       }
       .job:last-child, .proj:last-child {
         margin-bottom: 0;
@@ -599,7 +599,7 @@
       }
       .job .sub, .proj .sub {
         font-size: 8.4pt;
-        color: var(--accent);
+        color: var(--ink-mute);
         margin: 1px 0 3px;
         font-weight: 500;
       }
@@ -636,7 +636,7 @@
           height: 290mm;
           margin: 0 !important;
           box-shadow: none;
-          padding: 6mm 12mm 4mm;
+          padding: 6mm 12mm 10mm;
           page-break-after: avoid;
           overflow: hidden;
         }

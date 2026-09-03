@@ -57,7 +57,7 @@
           <section>
             <h2>个人简介</h2>
             <p class="profile-text">
-              <strong>蒙彼利埃 Epitech</strong> 二年级学生，专注于全栈 Web
+              <strong>蒙彼利埃 Epitech</strong> 三年级学生，专注于全栈 Web
               产品开发。<strong>SNCard</strong>（NFC，已上线
               sncard.fr）和 <strong>E-gine</strong>（B2B 业务开发）的创造者。
               曾在 <strong>JDC Occitanie</strong> 实习 4 个月。
@@ -70,7 +70,7 @@
             <div class="entry">
               <h3>Grande École 工程师项目</h3>
               <p class="sub">Epitech · 蒙彼利埃</p>
-              <p class="date">2024 – 2029 · 在读 (Tek2)</p>
+              <p class="date">2024 – 2029 · 在读 (Tek3)</p>
             </div>
             <div class="entry">
               <h3>STI2D 业士文凭</h3>
@@ -231,7 +231,7 @@
                 <h3>E-gine</h3>
                 <span class="badge">SaaS B2B</span>
               </div>
-              <p class="sub">Next.js 16 · React 19 · TypeScript · PostgreSQL · Prisma · NextAuth · Stripe · Tailwind</p>
+              <p class="sub">Next.js 16 · React 19 · TypeScript · PostgreSQL · Prisma · Stripe · Tailwind</p>
               <p>
                 B2B 业务开发平台：通过 Google Places API 按行业和地理位置
                 搜索企业，高级筛选（评分、评论、网站、电话），具有状态
@@ -248,9 +248,8 @@
               <p class="sub">Python · PyTorch · Gymnasium · NumPy</p>
               <p>
                 基于 <strong>Deep Q-Learning</strong> 训练的智能体，
-                自主完成月球登陆任务（Gymnasium LunarLander-v3）。
-                MLP Q 网络、经验回放、ε-贪心探索、目标网络，
-                多种子基准测试（95% 置信区间）。
+                自主完成月球登陆任务（Gymnasium LunarLander）。
+                从零实现完整算法，配备可复现的基准测试。
               </p>
             </article>
 
@@ -413,6 +412,7 @@
         border-right: 1px solid var(--accent);
         display: flex;
         flex-direction: column;
+        min-height: 235mm;
       }
 
       section h2 {
@@ -420,16 +420,16 @@
         font-weight: 700;
         letter-spacing: 0.08em;
         color: var(--accent);
-        margin: 0 0 5px;
-        padding-bottom: 3px;
+        margin: 0 0 2px;
+        padding-bottom: 2px;
         border-bottom: 1px solid var(--rule);
       }
       section.main > section > h2 {
         font-size: 11pt;
         border-bottom: 2px solid var(--accent);
         padding-bottom: 5px;
-        margin-top: 7mm;
-        margin-bottom: 4mm;
+        margin-top: 6mm;
+        margin-bottom: 3.5mm;
       }
       section.main > section:first-child > h2 {
         margin-top: 0;
@@ -437,7 +437,7 @@
 
       .side > section,
       .main > section {
-        margin-bottom: 1.5mm;
+        margin-bottom: 2.2mm;
       }
       .side > section:last-child,
       .main > section:last-child {
@@ -452,7 +452,7 @@
       }
 
       .entry {
-        margin-bottom: 2.5mm;
+        margin-bottom: 1.5mm;
       }
       .entry:last-child { margin-bottom: 0; }
       .entry h3 {
@@ -522,8 +522,8 @@
         justify-content: center;
         align-items: center;
         padding: 0;
-        margin-top: 5mm;
-        margin-bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
         border: none;
         background: transparent;
         text-decoration: none;
@@ -538,7 +538,7 @@
       }
 
       .job, .proj {
-        margin-bottom: 2mm;
+        margin-bottom: 1.4mm;
       }
       .job:last-child, .proj:last-child {
         margin-bottom: 0;
@@ -588,7 +588,7 @@
       }
       .job .sub, .proj .sub {
         font-size: 8.4pt;
-        color: var(--accent);
+        color: var(--ink-mute);
         margin: 1px 0 3px;
         font-weight: 500;
       }
@@ -625,7 +625,7 @@
           height: 290mm;
           margin: 0 !important;
           box-shadow: none;
-          padding: 6mm 12mm 4mm;
+          padding: 6mm 12mm 10mm;
           page-break-after: avoid;
           overflow: hidden;
         }
