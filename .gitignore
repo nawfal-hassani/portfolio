@@ -23,3 +23,12 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .vercel
+
+# sources d'images (bannieres LinkedIn/mail, captures brutes) - non deployees
+assets-source/
+
+# documents perso (lettre de motivation, rapports d'ecole)
+nawfal/
+
+# preferences Claude locales
+.claude/settings.local.json
