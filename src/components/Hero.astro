@@ -165,7 +165,7 @@ import Globe from './Globe/Globe.astro';
 <div id="exp-overlay" class="fixed inset-0 z-40 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-500" style="background: var(--theme-bg, #0a0a0a);">
   <!-- Sticky back button -->
   <div class="sticky top-0 z-10 px-6 pt-5 pb-3" style="background: linear-gradient(to bottom, var(--theme-bg, #0a0a0a) 60%, transparent);">
-    <button id="exp-back-btn" class="flex items-center gap-2 text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
+    <button id="exp-back-btn" class="flex items-center gap-2 rtl:mr-auto text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
       <span data-i18n="menuBack">Back to menu</span>
     </button>
@@ -290,7 +290,7 @@ import Globe from './Globe/Globe.astro';
 <div id="proj-overlay" class="fixed inset-0 z-40 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-500" style="background: var(--theme-bg, #0a0a0a);">
   <!-- Sticky back button -->
   <div class="sticky top-0 z-10 px-6 pt-5 pb-3" style="background: linear-gradient(to bottom, var(--theme-bg, #0a0a0a) 60%, transparent);">
-    <button id="proj-back-btn" class="flex items-center gap-2 text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
+    <button id="proj-back-btn" class="flex items-center gap-2 rtl:mr-auto text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
       <span data-i18n="menuBack">Back to menu</span>
     </button>
@@ -473,7 +473,7 @@ import Globe from './Globe/Globe.astro';
 <div id="salon-detail" class="fixed inset-0 z-50 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-500" style="background: var(--theme-bg, #0a0a0a);">
   <!-- Sticky back button -->
   <div class="sticky top-0 z-10 px-6 pt-5 pb-3" style="background: linear-gradient(to bottom, var(--theme-bg, #0a0a0a) 60%, transparent);">
-    <button id="salon-back-btn" class="flex items-center gap-2 text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
+    <button id="salon-back-btn" class="flex items-center gap-2 rtl:mr-auto text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
       <span data-i18n="salonBack">Back to projects</span>
     </button>
@@ -556,7 +556,7 @@ import Globe from './Globe/Globe.astro';
 <div id="dashboard-detail" class="fixed inset-0 z-50 overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-500" style="background: var(--theme-bg, #0a0a0a);">
   <!-- Sticky back button -->
   <div class="sticky top-0 z-10 px-6 pt-5 pb-3" style="background: linear-gradient(to bottom, var(--theme-bg, #0a0a0a) 60%, transparent);">
-    <button id="dashboard-back-btn" class="flex items-center gap-2 text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
+    <button id="dashboard-back-btn" class="flex items-center gap-2 rtl:mr-auto text-[#71717a] hover:text-white text-xs cursor-pointer transition-colors" style="direction: ltr;">
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
       <span data-i18n="dashBack">Back to projects</span>
     </button>
@@ -855,26 +855,33 @@ import Globe from './Globe/Globe.astro';
     const isMobile = () => window.innerWidth < 768;
     const isRtl = () => document.documentElement.dir === 'rtl';
 
+    // Text and globe offsets in explore mode (inverse direction for RTL)
+    function applyExploreLayout() {
+      const rtl = isRtl();
+      heroText!.style.transform = isMobile() ? 'translateY(40px)' : `translateX(${rtl ? '60px' : '-60px'})`;
+
+      let globeTransform = 'scale(1.15)';
+      if (!isMobile()) {
+        const gridWidth = globeArea!.parentElement!.getBoundingClientRect().width;
+        const shiftX = rtl ? (gridWidth / 2) : -(gridWidth / 2);
+        globeTransform = `translateX(${shiftX}px) scale(1.1)`;
+      }
+      // In timeline mode the globe is positioned by the experience overlay:
+      // only update the transform it gets back on restore
+      if (globeArea!.classList.contains('exp-timeline-mode')) {
+        savedGlobeTransform = globeTransform;
+      } else {
+        globeArea!.style.transform = globeTransform;
+      }
+    }
+
     function goExplore() {
       if (isExploring) return;
       isExploring = true;
 
-      const grid = globeArea.parentElement!;
-      const gridWidth = grid.getBoundingClientRect().width;
-      const rtl = isRtl();
-
-      // Animate text: fade out (inverse direction for RTL)
       heroText.style.opacity = '0';
-      heroText.style.transform = isMobile() ? 'translateY(40px)' : `translateX(${rtl ? '60px' : '-60px'})`;
       heroText.style.pointerEvents = 'none';
-
-      // Animate globe: move + scale (inverse direction for RTL)
-      if (isMobile()) {
-        globeArea.style.transform = 'scale(1.15)';
-      } else {
-        const shiftX = rtl ? (gridWidth / 2) : -(gridWidth / 2);
-        globeArea.style.transform = `translateX(${shiftX}px) scale(1.1)`;
-      }
+      applyExploreLayout();
 
       // Hide explore button
       exploreBtn.style.opacity = '0';
@@ -1455,6 +1462,14 @@ import Globe from './Globe/Globe.astro';
 
     exploreBtn.addEventListener('click', goExplore);
     backBtn.addEventListener('click', goBack);
+
+    // Switching to/from Arabic flips the grid: recompute offsets while exploring
+    new MutationObserver(() => {
+      if (isExploring) applyExploreLayout();
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['dir'] });
+    window.addEventListener('resize', () => {
+      if (isExploring) applyExploreLayout();
+    });
   }
 
   document.addEventListener('DOMContentLoaded', initExplore);
